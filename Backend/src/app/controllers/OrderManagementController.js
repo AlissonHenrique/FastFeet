@@ -1,11 +1,11 @@
 import { getHours } from 'date-fns';
-import Order from '../models/Order';
+import OrderManagement from '../models/OrderManagement';
 import Mail from '../../mail/mail';
 import { format, parseISO } from 'date-fns';
 
-class OrderController {
+class OrderManagementController {
   async index(req, res) {
-    const response = await Order.findAll();
+    const response = await OrderManagement.findAll();
     return res.json(response);
   }
 
@@ -42,7 +42,7 @@ class OrderController {
       }
     );
     console.log(start_date);
-    //  const response = await Order.create(req.body);
+    //  const response = await OrderManagement.create(req.body);
     return res.json({ msg: 'ok' });
   }
   async update(req, res) {
@@ -50,9 +50,9 @@ class OrderController {
   }
 
   async delete(req, res) {
-    await Order.destroy({ where: { id: req.params.id } });
+    await OrderManagement.destroy({ where: { id: req.params.id } });
     return res.json({ msg: `id deletado com sucesso ` });
   }
 }
 
-export default new OrderController();
+export default new OrderManagementController();
