@@ -6,6 +6,7 @@ import SessionController from './app/controllers/SessionController';
 import authMiddleware from './app/middlewares/auth';
 import RecipientController from './app/controllers/RecipientController';
 import DelivereManagementController from './app/controllers/DelivereManagementController';
+import DelivereController from './app/controllers/DelivereController';
 import OrderManagementController from './app/controllers/OrderManagementController';
 import ProblemController from './app/controllers/ProblemController';
 
@@ -19,11 +20,11 @@ routes.post('/delivere', upload.single('file'), DelivereManagementController.sto
 
 routes.use(authMiddleware);
 
-// DESTINATARIOS //
+// GESTAO DE DESTINATARIOS //
 routes.post('/recipient', RecipientController.store);
 routes.put('/recipient', RecipientController.update);
 
-// ENTREGADORES //
+// GESTAO DE ENTREGADORES //
 routes.get('/delivere', DelivereManagementController.index);
 routes.put('/delivere', DelivereManagementController.update);
 routes.delete('/delivere', DelivereManagementController.delete);
@@ -34,7 +35,12 @@ routes.get('/order', OrderManagementController.index);
 routes.put('/order', OrderManagementController.update);
 routes.delete('/order', OrderManagementController.delete);
 
-// Problemas
+// ENTREGADORES //
+routes.get('/deliveryman/:id/deliveries', DelivereController.index);
+
+
+
+// PROBLEMAS
 routes.get('/problem', ProblemController.index);
 
 export default routes;
