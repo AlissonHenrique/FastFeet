@@ -24,8 +24,8 @@ routes.post(
 
 ///ENTREGADORES
 routes.get('/listdelivery/:id/deliveres', DelivereController.index);
-routes.post('/problem/:id', ProblemController.store);
-
+routes.post('/problem', ProblemController.store);
+routes.get('/problem', ProblemController.index);
 // PROBLEMAS
 //ROTAS AUTENTICADAS
 routes.use(authMiddleware);

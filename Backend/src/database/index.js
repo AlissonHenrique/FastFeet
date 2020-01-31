@@ -4,9 +4,15 @@ import Recipient from '../app/models/Recipient';
 import databaseConfig from '../config/database';
 import DelivereManagement from '../app/models/DelivereManagement';
 import OrderManagement from '../app/models/OrderManagement';
-import Problem from '../app/models/Problem';
+import DelivereProblem from '../app/models/DelivereProblem';
 
-const models = [User, Recipient, DelivereManagement, OrderManagement, Problem];
+const models = [
+  User,
+  Recipient,
+  DelivereManagement,
+  OrderManagement,
+  DelivereProblem,
+];
 
 class Database {
   constructor() {
@@ -15,7 +21,6 @@ class Database {
 
   init() {
     this.connection = new Sequelize(databaseConfig);
-
     models
       .map(model => model.init(this.connection))
       .map(model => model.associate && model.associate(this.connection.models));
