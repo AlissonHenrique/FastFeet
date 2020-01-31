@@ -22,6 +22,12 @@ routes.post(
   DelivereManagementController.store
 );
 
+///ENTREGADORES
+routes.get('/listdelivery/:id/deliveres', DelivereController.index);
+routes.post('/problem/:id', ProblemController.store);
+
+// PROBLEMAS
+//ROTAS AUTENTICADAS
 routes.use(authMiddleware);
 
 // GESTAO DE DESTINATARIOS //
@@ -37,13 +43,10 @@ routes.delete('/delivere/:id', DelivereManagementController.delete);
 // GESTÃO DE ENCOMENDA //
 routes.post('/order', OrderManagementController.store);
 routes.get('/order', OrderManagementController.index);
-routes.put('/order', OrderManagementController.update);
-routes.delete('/order', OrderManagementController.delete);
+routes.put('/order/:id', OrderManagementController.update);
+routes.delete('/order/:id', OrderManagementController.delete);
 
 // ENTREGADORES //
-routes.get('/deliveryman/:id/deliveries', DelivereController.index);
-
-// PROBLEMAS
-routes.get('/problem', ProblemController.index);
+routes.get('/deliveryman/:id/deliveres', DelivereController.index);
 
 export default routes;

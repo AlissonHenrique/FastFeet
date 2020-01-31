@@ -11,42 +11,46 @@ class OrderManagementController {
 
   async store(req, res) {
     const { product, start_date, end_date } = req.body;
-    const get = getHours(new Date());
+    const get = getHours(parseISO(start_date));
 
     if (get < 8 || get > 18) {
       return res.status(400).json({ error: 'Horário não permitido' });
     }
-
+    const response = await OrderManagement.create(req.body);
+    return res.json(response);
     // dispara email para o entregador
+    // const formatted = valor => {
+    //   format(parseISO(valor), 'MM/dd/yyyy');
+    // };
 
-    const formatted = valor => {
-      format(parseISO(valor), 'MM/dd/yyyy');
-    };
-
-    await Mail.sendMail(
-      {
-        to: 'teste@fastfat.com',
-        subject: 'teste',
-        template: 'delivere',
-        context: {
-          product,
-          dataInicial: formatted(start_date),
-          dataFinal: formatted(end_date),
-        },
-      },
-      err => {
-        if (err) {
-          res.status(400).send({ error: 'erro no email' });
-        }
-        return res.send();
-      }
-    );
-    console.log(start_date);
-    //  const response = await OrderManagement.create(req.body);
-    return res.json({ msg: 'ok' });
+    // await Mail.sendMail({
+    //     to: 'teste@fastfat.com',
+    //     subject: 'teste',
+    //     template: 'delivere',
+    //     context: {
+    //       product,
+    //       dataInicial: formatted(start_date),
+    //       dataFinal: formatted(end_date),
+    //     },
+    //   },
+    //   err => {
+    //     if (err) {
+    //       res.status(400).send({ error: 'erro no email' });
+    //     }
+    //     return res.send();
+    //   }
+    // );
   }
   async update(req, res) {
-    return res.json({ msg: 'ok' });
+    const response = await OrderManagement.findByPk(req.params.id);
+    const { start_date } = req.body;
+    const get = getHours(parseISO(start_date));
+
+    if (get < 8 || get > 18) {
+      return res.status(400).json({ error: 'Horário não permitido' });
+    }
+    const up = await response.update(req.body);
+    return res.json(up);
   }
 
   async delete(req, res) {

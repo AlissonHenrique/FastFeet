@@ -9,7 +9,7 @@ class RecipientControler {
 
   async store(req, res) {
     const schema = Yup.object().shape({
-      name: Yup.string().required(),
+      nome: Yup.string().required(),
       rua: Yup.string().required(),
       numero: Yup.number().required(),
       complemento: Yup.string().required(),
