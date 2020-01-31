@@ -12,13 +12,14 @@ class DelivereManagementController {
   }
 
   async update(req, res) {
-    const response = await DelivereManagement.update(req.body);
-    return res.json(response);
+    const response = await DelivereManagement.findByPk(req.params.id);
+    const up = await response.update(req.body);
+    return res.json(up);
   }
 
   async delete(req, res) {
     await DelivereManagement.destroy({ where: { id: req.params.id } });
-    return res.json({ msg: `id deletado com sucesso ` });
+    return res.json({ msg: `Deletado com sucesso ` });
   }
 }
 
