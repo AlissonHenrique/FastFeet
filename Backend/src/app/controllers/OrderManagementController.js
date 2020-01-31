@@ -1,11 +1,22 @@
 import { getHours } from 'date-fns';
 import OrderManagement from '../models/OrderManagement';
+import DelivereManagement from '../models/DelivereManagement';
 import Mail from '../../mail/mail';
-import { format, parseISO } from 'date-fns';
+import { parseISO, format } from 'date-fns';
 
 class OrderManagementController {
   async index(req, res) {
-    const response = await OrderManagement.findAll();
+    const response = await OrderManagement.findOne({
+      where: { id: req.params.id },
+      include: [
+        {
+          model: DelivereManagement,
+          as: 'entregador',
+          attributes: ['email'],
+        },
+      ],
+    });
+
     return res.json(response);
   }
 
@@ -16,30 +27,44 @@ class OrderManagementController {
     if (get < 8 || get > 18) {
       return res.status(400).json({ error: 'Horário não permitido' });
     }
+
+    const response = await OrderManagement.findOne({
+      where: { id: req.body.deliveryman_id },
+      include: [
+        {
+          model: DelivereManagement,
+          as: 'entregador',
+          attributes: ['email', 'name'],
+        },
+      ],
+    });
+
+    const formatted = valor => {
+      return format(valor, 'MM/dd/yyyy');
+    };
+
+    await Mail.sendMail(
+      {
+        to: response.entregador.email,
+        subject: 'FastFeet',
+        template: 'delivere',
+        context: {
+          product,
+          dataInicial: formatted(parseISO(start_date)),
+          dataFinal: formatted(parseISO(end_date)),
+          name: response.entregador.name,
+        },
+      },
+      err => {
+        if (err) {
+          res.status(400).send({ error: 'erro no email' });
+        }
+        return res.send();
+      }
+    );
+
     const response = await OrderManagement.create(req.body);
     return res.json(response);
-    // dispara email para o entregador
-    // const formatted = valor => {
-    //   format(parseISO(valor), 'MM/dd/yyyy');
-    // };
-
-    // await Mail.sendMail({
-    //     to: 'teste@fastfat.com',
-    //     subject: 'teste',
-    //     template: 'delivere',
-    //     context: {
-    //       product,
-    //       dataInicial: formatted(start_date),
-    //       dataFinal: formatted(end_date),
-    //     },
-    //   },
-    //   err => {
-    //     if (err) {
-    //       res.status(400).send({ error: 'erro no email' });
-    //     }
-    //     return res.send();
-    //   }
-    // );
   }
   async update(req, res) {
     const response = await OrderManagement.findByPk(req.params.id);

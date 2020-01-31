@@ -25,7 +25,6 @@ module.exports = {
       signature_id: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
       },
       product: {
         type: Sequelize.STRING,

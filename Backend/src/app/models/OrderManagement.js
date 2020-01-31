@@ -19,5 +19,11 @@ class OrderManagement extends Model {
 
     return this;
   }
+  static associate(models) {
+    this.belongsTo(models.DelivereManagement, {
+      foreignKey: 'deliveryman_id',
+      as: 'entregador',
+    });
+  }
 }
 export default OrderManagement;
