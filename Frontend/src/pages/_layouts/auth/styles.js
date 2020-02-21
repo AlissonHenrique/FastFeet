@@ -1,9 +1,11 @@
+
 import styled from 'styled-components';
+
 import { darken } from 'polished';
 
 export const Wrapper = styled.div`
   height: 100%;
-  background: #7D40E7;
+  background: #7d40e7;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,12 +38,10 @@ export const Content = styled.div`
       }
     }
 
-
-
     button {
       margin: 5px 0 0;
       height: 44px;
-      background: #7D40E7;
+      background: #7d40e7;
       font-weight: bold;
       color: #fff;
       border: 0;
