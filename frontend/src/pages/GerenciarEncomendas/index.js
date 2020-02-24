@@ -17,7 +17,7 @@ import {
 } from './styles';
 import Header from '../../components/Header';
 
-export default function GerenciarEncomenda() {
+export default function GerenciarEncomendas() {
   return (
     <>
       <Header />

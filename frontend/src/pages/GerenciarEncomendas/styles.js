@@ -63,10 +63,10 @@ export const HeaderTable = styled.div`
   font-size: 16px;
   font-weight: bold;
   text-align: left;
-  padding: 0 25px;
   height: 57px;
   .colum-01 {
     width: 120px;
+    padding-left: 25px;
   }
   .colum-02 {
     width: 200px;
@@ -75,16 +75,18 @@ export const HeaderTable = styled.div`
     width: 180px;
   }
   .colum-04 {
-    width: 165px;
+    width: 170px;
   }
   .colum-05 {
-    width: 215px;
+    width: 220px;
   }
   .colum-06 {
     width: 225px;
   }
   .colum-07 {
     width: 95px;
+    padding-right: 25px;
+    text-align: right;
   }
 `;
 
@@ -98,10 +100,10 @@ export const Table = styled.div`
   height: 57px;
   font-size: 16px;
   color: #666666;
-  padding: 0 25px;
   border-radius: 4px;
   .colum-01 {
     width: 120px;
+    padding-left: 25px;
   }
   .colum-02 {
     width: 200px;
@@ -123,16 +125,22 @@ export const Table = styled.div`
     }
   }
   .colum-04 {
-    width: 165px;
+    width: 170px;
   }
   .colum-05 {
-    width: 215px;
+    width: 220px;
   }
   .colum-06 {
-    width: 235px;
+    width: 225px;
   }
   .colum-07 {
     width: 95px;
+    padding-right: 25px;
+    text-align: right;
+    margin-top: 120px;
+    svg {
+      margin-right: 12px;
+    }
   }
 `;
 export const Menu = styled.div`
@@ -143,7 +151,8 @@ export const Menu = styled.div`
   background: #fff;
   border: 1px solid #eeeeee;
   border-radius: 8px;
-  position: absolute;
+  position: relative;
+  right: 30px;
   align-items: center;
   &::before {
     content: '';
