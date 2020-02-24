@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { MdAdd } from 'react-icons/md';
 import { darken } from 'polished';
 import img from '../../assets/icon-search.png';
+import arrow from '../../assets/icon-arrow.svg';
 
 export const Container = styled.div`
   max-width: 1200px;
@@ -64,23 +65,26 @@ export const HeaderTable = styled.div`
   text-align: left;
   padding: 0 25px;
   height: 57px;
-  div:nth-child(1) {
+  .colum-01 {
     width: 120px;
   }
-  div:nth-child(2) {
+  .colum-02 {
     width: 200px;
   }
-  div:nth-child(3) {
+  .colum-03 {
     width: 180px;
   }
-  div:nth-child(4) {
+  .colum-04 {
     width: 165px;
   }
-  div:nth-child(5) {
+  .colum-05 {
     width: 215px;
   }
-  div:nth-child(6) {
+  .colum-06 {
     width: 225px;
+  }
+  .colum-07 {
+    width: 95px;
   }
 `;
 
@@ -96,14 +100,14 @@ export const Table = styled.div`
   color: #666666;
   padding: 0 25px;
   border-radius: 4px;
-  div:nth-child(1) {
+  .colum-01 {
     width: 120px;
   }
-  div:nth-child(2) {
+  .colum-02 {
     width: 200px;
   }
 
-  div:nth-child(3) {
+  .colum-03 {
     display: flex;
     align-items: center;
     width: 180px;
@@ -118,13 +122,50 @@ export const Table = styled.div`
       height: 35px;
     }
   }
-  div:nth-child(4) {
+  .colum-04 {
     width: 165px;
   }
-  div:nth-child(5) {
+  .colum-05 {
     width: 215px;
   }
-  div:nth-child(6) {
+  .colum-06 {
     width: 235px;
+  }
+  .colum-07 {
+    width: 95px;
+  }
+`;
+export const Menu = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  width: 150px !important;
+  background: #fff;
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  position: absolute;
+  align-items: center;
+  &::before {
+    content: '';
+    background: url(${arrow});
+    display: block;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: -10px;
+  }
+  div {
+    display: flex;
+    width: 100%;
+    font-size: 16px;
+    color: #999999;
+    background: transparent;
+    border: 0;
+
+    border-bottom: 1px solid #eeeeee;
+    padding: 7px 0;
+    p {
+      margin-left: 5px;
+    }
   }
 `;
