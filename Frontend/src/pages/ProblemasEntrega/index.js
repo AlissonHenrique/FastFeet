@@ -18,11 +18,11 @@ import Header from '../../components/Header';
 export default function ProblemasEntrega() {
 
   const [modal, setModal] = useState();
-  const [menu, setMenu] = useState();
+  const [menu, setMenu] = useState('none');
 
 
 
-  function handleMenu() {
+  function handleOpenMenu() {
     setMenu('show');
   }
   function handleCloseMenu() {
@@ -50,18 +50,18 @@ export default function ProblemasEntrega() {
       <Container >
         <h1>Problemas na entrega</h1>
 
-        <HeaderTable>
+        <HeaderTable >
           <div className="colum-01">Encomenda</div>
           <div className="colum-02">Problema</div>
 
           <div className="colum-07">Ações</div>
         </HeaderTable>
-        <Table>
+        <Table  >
           <div className="colum-01">#01</div>
           <div className="colum-02">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in mauris et felis eleifend elementum vel quis lectus…</div>
-          <div className="colum-07">
+          <div className="colum-07" onMouseOver={handleOpenMenu} onMouseOut={handleCloseMenu} >
             <MdMoreHoriz color="#C6C6C6" size={20} />
-            <Menu >
+            <Menu state={menu}>
               <button type="button" onClick={handleModal}>
                 <MdRemoveRedEye color="#4D85EE" size={20} />
                 <p> Visualizar</p>

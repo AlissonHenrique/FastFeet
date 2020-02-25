@@ -114,10 +114,11 @@ export const Table = styled.div`
   .colum-07 {
     width: 95px;
     padding-right: 25px;
+    height:15px;
     text-align: right;
-    margin-top: 70px;
     svg {
       margin-right: 12px;
+      cursor: pointer;
     }
   }
 `;
@@ -132,6 +133,7 @@ export const Menu = styled.div`
   position: relative;
   right: 30px;
   align-items: center;
+  display: ${props => props.state || 'none'};
   &::before {
     content: '';
     background: url(${arrow});
@@ -141,14 +143,13 @@ export const Menu = styled.div`
     position: absolute;
     top: -10px;
   }
-  div {
+  button {
     display: flex;
     width: 100%;
     font-size: 16px;
     color: #999999;
     background: transparent;
     border: 0;
-
     border-bottom: 1px solid #eeeeee;
     padding: 7px 0;
     p {

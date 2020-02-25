@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import {
@@ -18,6 +18,16 @@ import {
 import Header from '../../components/Header';
 
 export default function GerenciarEncomendas() {
+  const [menu, setMenu] = useState('none');
+
+
+
+  function handleOpenMenu() {
+    setMenu('show');
+  }
+  function handleCloseMenu() {
+    setMenu('');
+  }
   return (
     <>
       <Header />
@@ -49,19 +59,19 @@ export default function GerenciarEncomendas() {
           <div className="colum-04">Rio do Sul</div>
           <div className="colum-05">Santa Catarina</div>
           <div className="colum-06">ENTREGUE</div>
-          <div className="colum-07">
+          <div className="colum-07" onMouseOver={handleOpenMenu} onMouseOut={handleCloseMenu} >
             <MdMoreHoriz color="#C6C6C6" size={20} />
-            <Menu>
-              <div>
+            <Menu state={menu}>
+              <button type="button">
                 <MdRemoveRedEye color="#8E5BE8" size={20} /> <p> Visualizar</p>
-              </div>
-              <div>
+              </button>
+              <button type="button">
                 <MdCreate color="#4D85EE" size={20} />
                 <p> Editar</p>
-              </div>
-              <div>
+              </button>
+              <button type="button">
                 <MdDeleteForever color="#DE3B3B" size={20} /> <p> Excluir</p>
-              </div>
+              </button>
             </Menu>
           </div>
         </Table>

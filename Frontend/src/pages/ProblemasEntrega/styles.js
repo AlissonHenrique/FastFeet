@@ -101,11 +101,12 @@ export const Table = styled.div`
   }
   .colum-07 {
     width: 95px;
+    height:15px;
     padding-right: 25px;
     text-align: right;
-    margin-top: 80px;
     svg {
       margin-right: 12px;
+      cursor: pointer;
     }
   }
 `;
@@ -115,7 +116,7 @@ export const ModalBlack = styled.div`
   height: 100vh;
   width: 100%;
   background: rgba(0, 0, 0, 0.7);
-   display: ${props => props.state || 'none'};
+  display: ${props => props.state || 'none'};
 `;
 export const BoxModal = styled.div`
   z-index: 2;
@@ -177,8 +178,7 @@ export const Menu = styled.div`
   background: #fff;
   border: 1px solid #eeeeee;
   border-radius: 8px;
-  position: relative;
-  right: 30px;
+  display: ${props => props.state || 'none'};
   align-items: left;
 
   &::before {
@@ -187,8 +187,10 @@ export const Menu = styled.div`
     display: block;
     width: 10px;
     height: 10px;
-    position: absolute;
+    position: relative;
     top: -10px;
+    left: 30px;
+
   }
   button {
     display: flex;
