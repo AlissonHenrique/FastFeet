@@ -1,5 +1,6 @@
 import React from 'react';
+import GerenciarEncomendas from '../GerenciarEncomendas'
 
 export default function Dashboard() {
-  return <h1>Hello</h1>;
+  return <GerenciarEncomendas />;
 }

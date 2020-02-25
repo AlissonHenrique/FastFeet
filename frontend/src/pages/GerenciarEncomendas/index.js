@@ -59,7 +59,7 @@ export default function GerenciarEncomendas() {
           <div className="colum-04">Rio do Sul</div>
           <div className="colum-05">Santa Catarina</div>
           <div className="colum-06">ENTREGUE</div>
-          <div className="colum-07" onMouseOver={handleOpenMenu} onMouseOut={handleCloseMenu} >
+          <div className="colum-07" onMouseOver={handleOpenMenu} onFocus onMouseOut={handleCloseMenu} onBlur >
             <MdMoreHoriz color="#C6C6C6" size={20} />
             <Menu state={menu}>
               <button type="button">

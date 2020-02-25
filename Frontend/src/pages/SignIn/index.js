@@ -28,11 +28,10 @@ export default function SignIn() {
         <input
           name="password"
           type="password"
-          placeholder="Sua senha secreta"
-        />
+          placeholder="Sua senha secreta" />
 
         <button type="submit">{loading ? 'Carregando...' : 'Acessar'}</button>
-        <Link to="/register">Criar conta gratuita</Link>
+
       </form>
     </>
   );
