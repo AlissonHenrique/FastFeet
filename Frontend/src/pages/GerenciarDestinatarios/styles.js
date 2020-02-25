@@ -33,7 +33,7 @@ export const HeaderBox = styled.div`
     height: 36px;
     line-height: 36px;
     padding: 10px 15px;
-    margin-right: 15px;
+
 
     &:hover {
       background: ${darken(0.03, '#7D40E7')};

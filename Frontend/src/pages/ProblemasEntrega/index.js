@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   MdMoreHoriz,
@@ -10,14 +10,44 @@ import {
   HeaderTable,
   Table,
   Menu,
+  ModalBlack,
+  BoxModal
 } from './styles';
 import Header from '../../components/Header';
 
 export default function ProblemasEntrega() {
+
+  const [modal, setModal] = useState();
+  const [menu, setMenu] = useState();
+
+
+
+  function handleMenu() {
+    setMenu('show');
+  }
+  function handleCloseMenu() {
+    setMenu('');
+  }
+  function handleModal() {
+    setModal('show');
+
+    // const response = await api.get(`help/${id}/help-orders`);
+    // setMd(response.data);
+  }
+  function handleCloseModal() {
+    setModal('');
+  }
   return (
     <>
+      <ModalBlack state={modal} onClick={handleCloseModal} />
+      <BoxModal state={modal}>
+        <h1>VISUALIZAR PROBLEMA</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in mauris et felis eleifend elementum vel quis lectus. Vivamus dapibus nisi augue, vitae ultrices ligula elementum at. Proin ut metus in mi tincidunt vestibulum a a felis. Aenean dictum libero eu urna tristique vestibulum. Fusce feugiat justo et augue facilisis, sit amet ornare eros consequat. Suspendisse semper risus feugiat nisl commodo, sed mollis neque auctor. Nullam eu fringilla lectus. Phasellus sed sapien sed turpis imperdiet maximus. Aenean ante nulla, bibendum non facilisis at, facilisis eget ex. In ut quam et tellus aliquet tincidunt.</p>
+
+      </BoxModal>
+
       <Header />
-      <Container>
+      <Container >
         <h1>Problemas na entrega</h1>
 
         <HeaderTable>
@@ -31,15 +61,14 @@ export default function ProblemasEntrega() {
           <div className="colum-02">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in mauris et felis eleifend elementum vel quis lectus…</div>
           <div className="colum-07">
             <MdMoreHoriz color="#C6C6C6" size={20} />
-            <Menu>
-
-              <div>
+            <Menu >
+              <button type="button" onClick={handleModal}>
                 <MdRemoveRedEye color="#4D85EE" size={20} />
                 <p> Visualizar</p>
-              </div>
-              <div>
+              </button>
+              <button type="button">
                 <MdDeleteForever color="#DE3B3B" size={20} /> <p> Cancelar encomenda</p>
-              </div>
+              </button>
             </Menu>
           </div>
         </Table>

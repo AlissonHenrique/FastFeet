@@ -25,7 +25,7 @@ export default function GerenciarEntregadores() {
         <HeaderBox>
           <input type="text" placeholder="Buscar por entregador" />
           <div>
-            <Link to="/registerstudent">
+            <Link to="/cadastroentregadores">
               <IconAdd /> Cadastrar
             </Link>
           </div>

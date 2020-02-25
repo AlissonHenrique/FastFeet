@@ -109,6 +109,66 @@ export const Table = styled.div`
     }
   }
 `;
+export const ModalBlack = styled.div`
+  z-index: 1;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+   display: ${props => props.state || 'none'};
+`;
+export const BoxModal = styled.div`
+  z-index: 2;
+  position:absolute;
+  padding: 22px;
+  width: 450px;
+  height: auto;
+  border-radius: 4px;
+  background: #fff;
+  top:31%;
+  left:0;
+  right:0;
+  margin:auto;
+   display: ${props => props.state || 'none'};
+  h1,
+  h2 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #444444;
+    text-transform: uppercase;
+  }
+  p {
+    font-size: 16px;
+    line-height: 26px;
+    color: #666666;
+    margin: 15px 0;
+  }
+  textarea {
+    width: 100%;
+    height: 127px;
+    margin-top: 15px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    border-color: #dddddd;
+    padding: 15px;
+    font-size: 16px;
+    font-family: 'Roboto';
+    color: #999999;
+  }
+  button {
+    width: 100%;
+    height: 45px;
+    background: #ee4d64;
+    line-height: 45px;
+    text-align: center;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+`;
 export const Menu = styled.div`
   display: flex;
   flex-direction: column;
@@ -120,6 +180,7 @@ export const Menu = styled.div`
   position: relative;
   right: 30px;
   align-items: left;
+
   &::before {
     content: '';
     background: url(${arrow});
@@ -129,13 +190,14 @@ export const Menu = styled.div`
     position: absolute;
     top: -10px;
   }
-  div {
+  button {
     display: flex;
     width: 100%;
     font-size: 16px;
     color: #999999;
     background: transparent;
     border: 0;
+    cursor: pointer;
 
     border-bottom: 1px solid #eeeeee;
     padding: 7px 0;

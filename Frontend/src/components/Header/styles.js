@@ -58,4 +58,7 @@ export const Container = styled.div`
       width: 100px;
     }
   }
+  .active{
+    color:#444444 !important;
+  }
 `;

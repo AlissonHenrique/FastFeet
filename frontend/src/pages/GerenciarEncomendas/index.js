@@ -26,7 +26,7 @@ export default function GerenciarEncomendas() {
         <HeaderBox>
           <input type="text" placeholder="Buscar por encomendas" />
           <div>
-            <Link to="/registerstudent">
+            <Link to="/cadastroencomenda">
               <IconAdd /> Cadastrar
             </Link>
           </div>

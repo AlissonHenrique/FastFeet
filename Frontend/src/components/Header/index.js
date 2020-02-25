@@ -1,11 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Container } from './styles';
 import logo from '../../assets/logo.svg';
 
 export default function Header() {
+
   return (
-    <Container>
+
+    < Container >
       <div>
         <div>
           <Link to="/">
@@ -15,16 +17,16 @@ export default function Header() {
         <div>
           <ul className="menu">
             <li>
-              <Link to="/encomenda">ENCOMENDAS</Link>
+              <NavLink to="/encomendas" activeClassName='active' >ENCOMENDAS</NavLink >
             </li>
             <li>
-              <Link to="/">ENTREGADORES</Link>
+              <NavLink to="/entregadores" activeClassName='active'>ENTREGADORES</NavLink >
             </li>
             <li>
-              <Link to="/">DESTINATÁRIOS</Link>
+              <NavLink to="/destinatarios" activeClassName='active'>DESTINATÁRIOS</NavLink>
             </li>
             <li>
-              <Link to="/">PROBLEMAS</Link>
+              <NavLink to="/problemas" activeClassName='active'>PROBLEMAS</NavLink>
             </li>
           </ul>
         </div>
@@ -33,6 +35,6 @@ export default function Header() {
         <span>Admin FastFeet</span>
         <button type="button">Sair do sistema</button>
       </div>
-    </Container>
+    </Container >
   );
 }

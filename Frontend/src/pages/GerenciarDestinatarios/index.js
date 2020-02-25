@@ -25,7 +25,7 @@ export default function GerenciarDestinatarios() {
         <HeaderBox>
           <input type="text" placeholder="Buscar por encomendas" />
           <div>
-            <Link to="/registerstudent">
+            <Link to="/cadastrodestinatarios">
               <IconAdd /> Cadastrar
             </Link>
           </div>
