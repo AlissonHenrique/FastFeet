@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import api from '../../services/api';
 import {
   MdMoreHoriz,
   MdCreate,
-  MdDeleteForever,
+  MdDeleteForever
 } from 'react-icons/md';
 import {
   Container,
@@ -18,8 +18,14 @@ import Header from '../../components/Header';
 
 export default function GerenciarDestinatarios() {
   const [menu, setMenu] = useState('none');
-
-
+  const [list, setList] = useState([]);
+  useEffect(() => {
+    async function load() {
+      const response = await api.get('recipient')
+      return setList(response.data)
+    }
+    load()
+  }, [list])
 
   function handleOpenMenu() {
     setMenu('show');
@@ -47,24 +53,26 @@ export default function GerenciarDestinatarios() {
 
           <div className="colum-07">Ações</div>
         </HeaderTable>
-        <Table>
-          <div className="colum-01">#01</div>
-          <div className="colum-02">Ludwig van Beethoven</div>
-          <div className="colum-03">Rua Beethoven, 1729, Diadema - São Paulo</div>
+        {list.map(lt => (
+          <Table key={lt.id}>
+            <div className="colum-01">#{lt.id}</div>
+            <div className="colum-02">{lt.nome}</div>
+            <div className="colum-03">{lt.rua}, {lt.numero}, {lt.cidade} - {lt.estado}</div>
 
-          <div className="colum-07" onMouseOver={handleOpenMenu} onMouseOut={handleCloseMenu}>
-            <MdMoreHoriz color="#C6C6C6" size={20} />
-            <Menu state={menu}>
-              <button type="button">
-                <MdCreate color="#4D85EE" size={20} />
-                <p> Editar</p>
-              </button>
-              <button type="button">
-                <MdDeleteForever color="#DE3B3B" size={20} /> <p> Excluir</p>
-              </button>
-            </Menu>
-          </div>
-        </Table>
+            <div className="colum-07" onMouseOver={handleOpenMenu} onMouseOut={handleCloseMenu}>
+              <MdMoreHoriz color="#C6C6C6" size={20} />
+              <Menu state={menu}>
+                <button type="button">
+                  <MdCreate color="#4D85EE" size={20} />
+                  <p> Editar</p>
+                </button>
+                <button type="button">
+                  <MdDeleteForever color="#DE3B3B" size={20} /> <p> Excluir</p>
+                </button>
+              </Menu>
+            </div>
+          </Table>
+        ))}
       </Container>
     </>
   );

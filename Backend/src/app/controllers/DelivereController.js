@@ -1,6 +1,20 @@
 import OrderManagement from '../models/OrderManagement';
+import DelivereManagement from '../models/DelivereManagement';
 
 class DelivereController {
+  async store(req, res) {
+    const { id } = req.body
+
+    const delivere = await DelivereManagement.findOne({
+      where: { id },
+    });
+
+    if (!delivere) {
+      return res.status(401).json({ error: 'User not found' });
+    }
+    return res.json(delivere)
+  }
+
   async index(req, res) {
     const response = await OrderManagement.findAll({
       where: { deliveryman_id: req.params.id },

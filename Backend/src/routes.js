@@ -13,8 +13,12 @@ import ProblemController from './app/controllers/ProblemController';
 const routes = new Router();
 const upload = multer(multerConfig);
 
-routes.post('/users', Usercontroller.store);
+//routes.post('/users', Usercontroller.store);
 routes.post('/sessions', SessionController.store);
+
+// ENTREGADORES //
+routes.post('/deliveryman', DelivereController.store);
+routes.get('/deliveryman/:id/deliveres', DelivereController.index);
 
 routes.post(
   '/delivere',
@@ -28,12 +32,13 @@ routes.post('/problem', ProblemController.store);
 routes.get('/problem', ProblemController.index);
 // PROBLEMAS
 //ROTAS AUTENTICADAS
-routes.use(authMiddleware);
+
+//routes.use(authMiddleware);
 
 // GESTAO DE DESTINATARIOS //
 routes.post('/recipient', RecipientController.store);
 routes.put('/recipient', RecipientController.update);
-
+routes.get('/recipient', RecipientController.index);
 // GESTAO DE ENTREGADORES //
 routes.post('/delivere', DelivereManagementController.store);
 routes.get('/delivere', DelivereManagementController.index);
@@ -46,7 +51,6 @@ routes.get('/order/:id', OrderManagementController.index);
 routes.put('/order/:id', OrderManagementController.update);
 routes.delete('/order/:id', OrderManagementController.delete);
 
-// ENTREGADORES //
-routes.get('/deliveryman/:id/deliveres', DelivereController.index);
+
 
 export default routes;
