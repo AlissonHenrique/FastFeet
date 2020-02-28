@@ -22,9 +22,11 @@ export default function Routes() {
       <Route path="/destinatarios" component={GerenciarDestinatarios} />
       <Route path="/problemas" component={ProblemasEntrega} />
       <Route path="/cadastroentregadores" component={CadastroEntregadores} />
-      <Route path="/cadastrodestinatarios" component={CadastroDestinatario} />
-      <Route path="/cadastroencomenda" component={CadastroEncomenda} />
+      <Route path="/cadastroentregadores/:id/edit" component={CadastroEntregadores} />
 
+      <Route path="/cadastrodestinatarios/:id/edit" component={CadastroDestinatario} />
+      <Route path="/cadastroencomenda" component={CadastroEncomenda} />
+      <Route path="/cadastroencomenda/:id/edit" component={CadastroEncomenda} />
     </Switch>
   );
 }

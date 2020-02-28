@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import imgPhoto from '../../assets/icon-photo.svg'
 import {
   Container,
@@ -11,9 +11,28 @@ import {
   ContainerPhoto
 
 } from './styles';
+import PropTypes from 'prop-types';
+import api from '../../services/api';
 import Header from '../../components/Header';
+import { Form } from '@unform/web';
+import Input from '../../components/Form/Input';
 
-export default function CadastroEntregadores() {
+export default function CadastroEntregadores({ match }) {
+
+  function handleSubmit(data) {
+    console.log(data);
+  }
+
+  const [initial, setInitial] = useState([])
+  useEffect(() => {
+    async function loadData() {
+      const { id } = match.params;
+      const response = await api.get(`/delivere/${id}/deliveres/`);
+      setInitial(response.data)
+      console.log(response)
+    }
+    loadData();
+  }, [match.params]);
   return (
     <>
       <Header />
@@ -30,19 +49,21 @@ export default function CadastroEntregadores() {
           </div>
         </HeaderBox>
         <ContainerBox>
-          <ContainerPhoto>
-            <img src={imgPhoto} alt="Avatar" />
-          </ ContainerPhoto>
-          <div>
-            <label htmlFor="nome" >Nome<br />
-              <input type="text" />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="email" >Email<br />
-              <input type="text" />
-            </label>
-          </div>
+          <Form onSubmit={handleSubmit} initialData={initial}>
+            <ContainerPhoto>
+              <img src={imgPhoto} alt="Avatar" />
+            </ ContainerPhoto>
+            <div>
+              <label htmlFor="nome" >Nome<br />
+                <Input name="name" type="text" />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="email" >Email<br />
+                <Input name="email" type="text" />
+              </label>
+            </div>
+          </Form>
         </ContainerBox>
 
 
@@ -50,3 +71,6 @@ export default function CadastroEntregadores() {
     </>
   );
 }
+CadastroEntregadores.propTypes = {
+  match: PropTypes.object.isRequired,
+};

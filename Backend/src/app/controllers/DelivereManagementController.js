@@ -2,8 +2,12 @@ import DelivereManagement from '../models/DelivereManagement';
 
 class DelivereManagementController {
   async index(req, res) {
-    const response = await DelivereManagement.findAll();
-    return res.json(response);
+    const response = await DelivereManagement.findByPk(req.params.id);
+    if (response) {
+      return res.json(response);
+    }
+    const response2 = await DelivereManagement.findAll();
+    return res.json(response2);
   }
 
   async store(req, res) {

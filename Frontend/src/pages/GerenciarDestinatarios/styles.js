@@ -136,7 +136,8 @@ export const Menu = styled.div`
     position: absolute;
     top: -10px;
   }
-  button {
+   
+  button,a {
     display: flex;
     width: 100%;
     font-size: 16px;

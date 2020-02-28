@@ -33,6 +33,15 @@ export default function GerenciarDestinatarios() {
   function handleCloseMenu() {
     setMenu('');
   }
+  function handleDelete(id) {
+    try {
+      api.delete(`/recipient/${id}`);
+    } catch (err) {
+      console.tron.log(`${err}erro`);
+    }
+  }
+
+
   return (
     <>
       <Header />
@@ -62,11 +71,11 @@ export default function GerenciarDestinatarios() {
             <div className="colum-07" onMouseOver={handleOpenMenu} onMouseOut={handleCloseMenu}>
               <MdMoreHoriz color="#C6C6C6" size={20} />
               <Menu state={menu}>
-                <button type="button">
+                <Link to={`/cadastrodestinatarios/${lt.id}/edit`}>
                   <MdCreate color="#4D85EE" size={20} />
                   <p> Editar</p>
-                </button>
-                <button type="button">
+                </Link >
+                <button type="button" onClick={() => handleDelete(lt.id)}>
                   <MdDeleteForever color="#DE3B3B" size={20} /> <p> Excluir</p>
                 </button>
               </Menu>
