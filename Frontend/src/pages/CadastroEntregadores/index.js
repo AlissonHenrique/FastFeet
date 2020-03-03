@@ -17,20 +17,28 @@ import Header from '../../components/Header';
 import Input from '../../components/Form/Input';
 
 export default function CadastroEntregadores({ match }) {
+
+  const [initial, setInitial] = useState({});
+
+
+
+
+  useEffect(() => {
+    async function loadData() {
+      const id = match.params.id;
+      const response = await api.get(`/delivere/${id}/deliveres`);
+      setInitial(response.data);
+      console.log(response.data);
+    }
+    loadData();
+    console.log(match);
+  }, [match.params]);
+
+
   function handleSubmit(data) {
     console.log(data);
   }
 
-  const [initial, setInitial] = useState([]);
-  useEffect(() => {
-    async function loadData() {
-      const { id } = match.params;
-      const response = await api.get(`/delivere/${id}/deliveres/`);
-      setInitial(response.data);
-    }
-    loadData();
-    console.log(initial);
-  }, [match.params]);
   return (
     <>
       <Header />

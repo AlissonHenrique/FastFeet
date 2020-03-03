@@ -33,9 +33,9 @@ export default function GerenciarDestinatarios() {
   function handleCloseMenu() {
     setMenu('');
   }
-  function handleDelete(id) {
+  async function handleDelete(id) {
     try {
-      api.delete(`/recipient/${id}`);
+      await api.delete(`/recipient/${id}`);
     } catch (err) {
       console.tron.log(`${err}erro`);
     }

@@ -35,9 +35,9 @@ export default function GerenciarEntregadores() {
     setMenu('');
   }
 
-  function handleDelete(id) {
+  async function handleDelete(id) {
     try {
-      api.delete(`/delivere/${id}`);
+      await api.delete(`/delivere/${id}`);
     } catch (err) {
       console.tron.log(`${err}erro`);
     }

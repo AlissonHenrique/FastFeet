@@ -61,29 +61,28 @@ export default function ProblemasEntrega() {
           <div className="colum-07">Ações</div>
         </HeaderTable>
         {list.map(lt => (
-          <>
-            <Table key={lt.id}>
-              <div className="colum-01">#{lt.delivery_id}</div>
-              <div className="colum-02">{lt.description}</div>
-              <div className="colum-07" onMouseOver={handleOpenMenu} onMouseOut={handleCloseMenu} >
-                <MdMoreHoriz color="#C6C6C6" size={20} />
-                <Menu state={menu}>
-                  <button type="button" onClick={handleModal}>
-                    <MdRemoveRedEye color="#4D85EE" size={20} />
-                    <p> Visualizar</p>
-                  </button>
-                  <button type="button">
-                    <MdDeleteForever color="#DE3B3B" size={20} /> <p> Cancelar encomenda</p>
-                  </button>
-                </Menu>
-              </div>
-            </Table>
+          <Table key={lt.id}>
+            <div className="colum-01">#{lt.delivery_id}</div>
+            <div className="colum-02">{lt.description}</div>
+            <div className="colum-07" onMouseOver={handleOpenMenu} onMouseOut={handleCloseMenu} >
+              <MdMoreHoriz color="#C6C6C6" size={20} />
+              <Menu state={menu}>
+                <button type="button" onClick={handleModal}>
+                  <MdRemoveRedEye color="#4D85EE" size={20} />
+                  <p> Visualizar</p>
+                </button>
+                <button type="button">
+                  <MdDeleteForever color="#DE3B3B" size={20} /> <p> Cancelar encomenda</p>
+                </button>
+              </Menu>
+            </div>
             <BoxModal state={modal}>
               <h1>VISUALIZAR PROBLEMA</h1>
               <p>{lt.description} </p>
-
             </BoxModal>
-          </>
+          </Table>
+
+
         ))}
       </Container>
     </>
