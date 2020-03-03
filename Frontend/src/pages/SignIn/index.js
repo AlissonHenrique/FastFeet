@@ -1,37 +1,53 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useRef } from 'react';
 import * as Yup from 'yup';
-
-import { signInRequest } from '../../store/modules/auth/actions';
+import { Form } from '@unform/web';
 import logo from '../../assets/logo.svg';
+import Input from '../../components/Form/Input';
 
-const schema = Yup.object().shape({
-  email: Yup.string()
-    .email('Insira um e-mail válido')
-    .required('O e-mail é obrigatório'),
-  password: Yup.string().required('A senha é obrigatória'),
-});
 export default function SignIn() {
-  const dispatch = useDispatch();
-  const loading = useSelector(state => state.auth.loading);
-
-  function handleSubmit({ email, password }) {
-    dispatch(signInRequest(email, password));
+  const formRef = useRef(null);
+  async function handleSubmit(data) {
+    try {
+      // Remove all previous errors
+      formRef.current.setErrors({});
+      const schema = Yup.object().shape({
+        email: Yup.string()
+          .email()
+          .required(),
+        password: Yup.string()
+          .min(6)
+          .required(),
+      });
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+      // Validation passed
+      console.log(data);
+    } catch (err) {
+      const validationErrors = {};
+      if (err instanceof Yup.ValidationError) {
+        err.inner.forEach(error => {
+          validationErrors[error.path] = error.message;
+        });
+        formRef.current.setErrors(validationErrors);
+      }
+    }
   }
+
   return (
     <>
-      <img src={logo} alt="GoBarber" />
+      <img src={logo} alt="Fastfeet" />
 
-      <form schema={schema} onSubmit={handleSubmit}>
-        <input name="email" type="email" placeholder="Seu e-mail" />
-        <input
+      <Form ref={formRef} onSubmit={handleSubmit}>
+        <Input name="email" type="email" placeholder="Seu e-mail" />
+        <Input
           name="password"
           type="password"
-          placeholder="Sua senha secreta" />
+          placeholder="Sua senha secreta"
+        />
 
-        <button type="submit">{loading ? 'Carregando...' : 'Acessar'}</button>
-
-      </form>
+        <button type="submit">Acessar</button>
+      </Form>
     </>
   );
 }

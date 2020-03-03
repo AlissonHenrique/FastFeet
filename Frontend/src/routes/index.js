@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch, BrowserRouter } from 'react-router-dom';
 import Route from './Route';
 import SignIn from '../pages/SignIn';
 import GerenciarEncomendas from '../pages/GerenciarEncomendas';
@@ -14,19 +14,49 @@ import Dashboard from '../pages/Dashboard';
 
 export default function Routes() {
   return (
-    <Switch>
-      <Route path="/" exact component={SignIn} />
-      <Route path="/dashboard" component={Dashboard} isPrivate />
-      <Route path="/encomendas" component={GerenciarEncomendas} />
-      <Route path="/entregadores" component={GerenciarEntregadores} />
-      <Route path="/destinatarios" component={GerenciarDestinatarios} />
-      <Route path="/problemas" component={ProblemasEntrega} />
-      <Route path="/cadastroentregadores" component={CadastroEntregadores} />
-      <Route path="/cadastroentregadores/:id/edit" component={CadastroEntregadores} />
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={SignIn} />
+        <Route path="/dashboard" component={Dashboard} isPrivate />
+        <Route path="/encomendas" component={GerenciarEncomendas} isPrivate />
+        <Route
+          path="/entregadores"
+          component={GerenciarEntregadores}
+          isPrivate
+        />
+        <Route
+          path="/destinatarios"
+          component={GerenciarDestinatarios}
+          isPrivate
+        />
+        <Route path="/problemas" component={ProblemasEntrega} isPrivate />
+        <Route
+          path="/cadastroentregadores"
+          component={CadastroEntregadores}
+          isPrivate
+        />
+        <Route
+          path="/cadastroentregadores/:id/edit"
+          component={CadastroEntregadores}
+          isPrivate
+        />
 
-      <Route path="/cadastrodestinatarios/:id/edit" component={CadastroDestinatario} />
-      <Route path="/cadastroencomenda" component={CadastroEncomenda} />
-      <Route path="/cadastroencomenda/:id/edit" component={CadastroEncomenda} />
-    </Switch>
+        <Route
+          path="/cadastrodestinatarios/:id/edit"
+          component={CadastroDestinatario}
+          isPrivate
+        />
+        <Route
+          path="/cadastroencomenda"
+          component={CadastroEncomenda}
+          isPrivate
+        />
+        <Route
+          path="/cadastroencomenda/:id/edit"
+          component={CadastroEncomenda}
+          isPrivate
+        />
+      </Switch>
+    </BrowserRouter>
   );
 }

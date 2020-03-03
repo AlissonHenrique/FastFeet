@@ -34,7 +34,6 @@ export const HeaderBox = styled.div`
     line-height: 36px;
     padding: 10px 15px;
 
-
     &:hover {
       background: ${darken(0.03, '#7D40E7')};
     }
@@ -114,7 +113,7 @@ export const Table = styled.div`
   .colum-07 {
     width: 95px;
     padding-right: 25px;
-    height:15px;
+    height: 15px;
     text-align: right;
     svg {
       margin-right: 12px;
@@ -143,7 +142,8 @@ export const Menu = styled.div`
     position: absolute;
     top: -10px;
   }
-  button,a {
+  button,
+  a {
     display: flex;
     width: 100%;
     font-size: 16px;

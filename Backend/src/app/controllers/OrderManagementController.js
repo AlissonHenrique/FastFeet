@@ -63,8 +63,8 @@ class OrderManagementController {
       }
     );
 
-    const response = await OrderManagement.create(req.body);
-    return res.json(response);
+    const resp = await OrderManagement.create(req.body);
+    return res.json(resp);
   }
   async update(req, res) {
     const response = await OrderManagement.findByPk(req.params.id);

@@ -18,7 +18,6 @@ routes.post('/sessions', SessionController.store);
 
 // ENTREGADORES //
 
-
 routes.post(
   '/delivere',
   upload.single('file'),
@@ -50,7 +49,5 @@ routes.post('/order', OrderManagementController.store);
 routes.get('/order/:id', OrderManagementController.index);
 routes.put('/order/:id', OrderManagementController.update);
 routes.delete('/order/:id', OrderManagementController.delete);
-
-
 
 export default routes;
