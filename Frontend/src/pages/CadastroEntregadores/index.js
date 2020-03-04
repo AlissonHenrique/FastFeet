@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from '@unform/web';
 import imgPhoto from '../../assets/icon-photo.svg';
+import history from '../../services/history';
 import {
   Container,
   HeaderBox,
@@ -17,19 +18,27 @@ import Header from '../../components/Header';
 import Input from '../../components/Form/Input';
 
 export default function CadastroEntregadores({ match }) {
-  function handleSubmit(data) {
-    console.log(data);
+  const [initial, setInitial] = useState({});
+
+  async function handleSubmit(data) {
+    if (match.params.id) {
+      const { id } = match.params;
+      await api.put(`/delivere/${id}`, data);
+      history.push('/entregadores');
+    } else {
+      await api.post('/delivere', data);
+      history.push('/entregadores');
+    }
   }
 
-  const [initial, setInitial] = useState([]);
   useEffect(() => {
     async function loadData() {
       const { id } = match.params;
       const response = await api.get(`/delivere/${id}/deliveres/`);
       setInitial(response.data);
+      console.log('response');
     }
     loadData();
-    console.log(initial);
   }, [match.params]);
   return (
     <>
@@ -47,9 +56,19 @@ export default function CadastroEntregadores({ match }) {
           </div>
         </HeaderBox>
         <ContainerBox>
-          <Form onSubmit={handleSubmit}>
+          <Form initialData={initial} onSubmit={handleSubmit}>
             <ContainerPhoto>
-              <img src={imgPhoto} alt="Avatar" />
+              <label>
+                <img src={imgPhoto} alt="Avatar" />
+                {/* <input
+                  type="file"
+                  id="avatar"
+                  accept="image/*"
+                  data-file={file}
+                  onChange={handleChange}
+                  ref={ref}
+                /> */}
+              </label>
             </ContainerPhoto>
             <div>
               <label htmlFor="nome">

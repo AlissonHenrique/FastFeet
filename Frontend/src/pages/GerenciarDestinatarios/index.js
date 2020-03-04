@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
-import {
-  MdMoreHoriz,
-  MdCreate,
-  MdDeleteForever
-} from 'react-icons/md';
+import { MdMoreHoriz, MdCreate, MdDeleteForever } from 'react-icons/md';
 import {
   Container,
   HeaderBox,
@@ -21,11 +17,11 @@ export default function GerenciarDestinatarios() {
   const [list, setList] = useState([]);
   useEffect(() => {
     async function load() {
-      const response = await api.get('recipient')
-      return setList(response.data)
+      const response = await api.get('recipient');
+      return setList(response.data);
     }
-    load()
-  }, [list])
+    load();
+  }, [list]);
 
   function handleOpenMenu() {
     setMenu('show');
@@ -41,7 +37,6 @@ export default function GerenciarDestinatarios() {
     }
   }
 
-
   return (
     <>
       <Header />
@@ -50,7 +45,7 @@ export default function GerenciarDestinatarios() {
         <HeaderBox>
           <input type="text" placeholder="Buscar por encomendas" />
           <div>
-            <Link to="/cadastrodestinatarios">
+            <Link to="/caddestinatarios">
               <IconAdd /> Cadastrar
             </Link>
           </div>
@@ -66,15 +61,21 @@ export default function GerenciarDestinatarios() {
           <Table key={lt.id}>
             <div className="colum-01">#{lt.id}</div>
             <div className="colum-02">{lt.nome}</div>
-            <div className="colum-03">{lt.rua}, {lt.numero}, {lt.cidade} - {lt.estado}</div>
+            <div className="colum-03">
+              {lt.rua}, {lt.numero}, {lt.cidade} - {lt.estado}
+            </div>
 
-            <div className="colum-07" onMouseOver={handleOpenMenu} onMouseOut={handleCloseMenu}>
+            <div
+              className="colum-07"
+              onMouseOver={handleOpenMenu}
+              onMouseOut={handleCloseMenu}
+            >
               <MdMoreHoriz color="#C6C6C6" size={20} />
               <Menu state={menu}>
-                <Link to={`/cadastrodestinatarios/${lt.id}/edit`}>
+                <Link to={`/caddestinatarios/${lt.id}/edit`}>
                   <MdCreate color="#4D85EE" size={20} />
                   <p> Editar</p>
-                </Link >
+                </Link>
                 <button type="button" onClick={() => handleDelete(lt.id)}>
                   <MdDeleteForever color="#DE3B3B" size={20} /> <p> Excluir</p>
                 </button>

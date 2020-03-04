@@ -36,7 +36,7 @@ routes.get('/problem', ProblemController.index);
 routes.post('/recipient', RecipientController.store);
 routes.put('/recipient', RecipientController.update);
 routes.get('/recipient', RecipientController.index);
-
+routes.get('/recipient/:id', RecipientController.index);
 // GESTAO DE ENTREGADORES //
 routes.post('/delivere', DelivereManagementController.store);
 routes.get('/delivere', DelivereManagementController.index);

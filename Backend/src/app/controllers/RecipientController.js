@@ -3,8 +3,12 @@ import Recipient from '../models/Recipient';
 
 class RecipientControler {
   async index(req, res) {
-    const response = await Recipient.findAll();
-    return res.json(response);
+    const response = await Recipient.findByPk(req.params.id);
+    if (response) {
+      return res.json(response);
+    }
+    const response2 = await Recipient.findAll();
+    return res.json(response2);
   }
 
   async store(req, res) {

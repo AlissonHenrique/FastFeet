@@ -31,28 +31,28 @@ export default function Routes() {
         />
         <Route path="/problemas" component={ProblemasEntrega} isPrivate />
         <Route
-          path="/cadastroentregadores"
+          path="/cadentregadores"
           component={CadastroEntregadores}
           isPrivate
         />
         <Route
-          path="/cadastroentregadores/:id/edit"
+          path="/cadentregadores/:id/edit"
           component={CadastroEntregadores}
           isPrivate
         />
-
         <Route
-          path="/cadastrodestinatarios/:id/edit"
+          path="/caddestinatarios"
           component={CadastroDestinatario}
           isPrivate
         />
         <Route
-          path="/cadastroencomenda"
-          component={CadastroEncomenda}
+          path="/caddestinatarios/:id/edit"
+          component={CadastroDestinatario}
           isPrivate
         />
+        <Route path="/cadencomenda" component={CadastroEncomenda} isPrivate />
         <Route
-          path="/cadastroencomenda/:id/edit"
+          path="/cadencomenda/:id/edit"
           component={CadastroEncomenda}
           isPrivate
         />
