@@ -33,13 +33,18 @@ export default function CadastroEntregadores({ match }) {
 
   useEffect(() => {
     async function loadData() {
-      const { id } = match.params;
-      const response = await api.get(`/delivere/${id}/deliveres/`);
+      const id = match.params.id;
+      const response = await api.get(`/delivere/${id}/deliveres`);
       setInitial(response.data);
       console.log('response');
     }
     loadData();
   }, [match.params]);
+
+  function handleSubmit(data) {
+    console.log(data);
+  }
+
   return (
     <>
       <Header />
