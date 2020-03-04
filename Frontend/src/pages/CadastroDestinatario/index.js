@@ -68,7 +68,7 @@ export default function CadastroDestinatario({ match }) {
               <label htmlFor="Complemento">
                 Complemento
                 <br />
-                <Input name="complementi" />
+                <Input name="complemento" />
               </label>
             </div>
 

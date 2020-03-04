@@ -70,7 +70,7 @@ export default function GerenciarEntregadores() {
             >
               <MdMoreHoriz color="#C6C6C6" size={20} />
               <Menu state={menu}>
-                <Link to={`/cadentregadores/${lt.id}/edit`}>
+                <Link to={`/cadentregadoresedit/${lt.id}/edit`}>
                   <MdCreate color="#4D85EE" size={20} />
                   <p> Editar</p>
                 </Link>

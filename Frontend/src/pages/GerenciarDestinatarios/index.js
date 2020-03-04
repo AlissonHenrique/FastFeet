@@ -72,7 +72,7 @@ export default function GerenciarDestinatarios() {
             >
               <MdMoreHoriz color="#C6C6C6" size={20} />
               <Menu state={menu}>
-                <Link to={`/caddestinatarios/${lt.id}/edit`}>
+                <Link to={`/caddestinatariosedit/${lt.id}/edit`}>
                   <MdCreate color="#4D85EE" size={20} />
                   <p> Editar</p>
                 </Link>
