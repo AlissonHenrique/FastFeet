@@ -13,7 +13,7 @@ import {
 import Header from '../../components/Header';
 
 export default function GerenciarDestinatarios() {
-  const [menu, setMenu] = useState('none');
+  const [idopen, setIdopen] = useState({});
   const [list, setList] = useState([]);
   useEffect(() => {
     async function load() {
@@ -23,11 +23,13 @@ export default function GerenciarDestinatarios() {
     load();
   }, [list]);
 
-  function handleOpenMenu() {
-    setMenu('show');
+  function handleOpenMenu(id) {
+
+    setIdopen(id)
+
   }
   function handleCloseMenu() {
-    setMenu('');
+
   }
   async function handleDelete(id) {
     try {
@@ -67,11 +69,11 @@ export default function GerenciarDestinatarios() {
 
             <div
               className="colum-07"
-              onMouseOver={handleOpenMenu}
-              onMouseOut={handleCloseMenu}
+              onClick={() => handleOpenMenu(lt.id)}
+              onMouseOut={() => handleOpenMenu(lt.id)}
             >
               <MdMoreHoriz color="#C6C6C6" size={20} />
-              <Menu state={menu}>
+              <Menu className={idopen} >
                 <Link to={`/caddestinatariosedit/${lt.id}/edit`}>
                   <MdCreate color="#4D85EE" size={20} />
                   <p> Editar</p>

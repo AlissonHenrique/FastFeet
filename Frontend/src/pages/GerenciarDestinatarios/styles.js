@@ -124,7 +124,7 @@ export const Menu = styled.div`
   position: relative;
   right: 30px;
   align-items: center;
-  display: ${props => props.state || 'none'};
+  display: none;
   &::before {
     content: '';
     background: url(${arrow});
@@ -134,7 +134,9 @@ export const Menu = styled.div`
     position: absolute;
     top: -10px;
   }
-
+&:hover{
+  display:block;
+}
   button,
   a {
     display: flex;

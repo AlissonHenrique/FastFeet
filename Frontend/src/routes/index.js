@@ -19,38 +19,14 @@ export default function Routes() {
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/encomendas" component={GerenciarEncomendas} isPrivate />
       <Route path="/entregadores" component={GerenciarEntregadores} isPrivate />
-      <Route
-        path="/destinatarios"
-        component={GerenciarDestinatarios}
-        isPrivate
-      />
+      <Route path="/destinatarios" component={GerenciarDestinatarios} isPrivate />
       <Route path="/problemas" component={ProblemasEntrega} isPrivate />
-      <Route
-        path="/cadentregadores"
-        component={CadastroEntregadores}
-        isPrivate
-      />
-      <Route
-        path="/cadentregadoresedit/:id/edit"
-        component={CadastroEntregadores}
-        isPrivate
-      />
-      <Route
-        path="/caddestinatarios"
-        component={CadastroDestinatario}
-        isPrivate
-      />
-      <Route
-        path="/caddestinatariosedit/:id/edit"
-        component={CadastroDestinatario}
-        isPrivate
-      />
+      <Route path="/cadentregadores" component={CadastroEntregadores} isPrivate />
+      <Route path="/cadentregadoresedit/:id/edit" component={CadastroEntregadores} isPrivate />
+      <Route path="/caddestinatarios" component={CadastroDestinatario} isPrivate />
+      <Route path="/caddestinatariosedit/:id/edit" component={CadastroDestinatario} isPrivate />
       <Route path="/cadencomenda" component={CadastroEncomenda} isPrivate />
-      <Route
-        path="/cadencomenda/:id/edit"
-        component={CadastroEncomenda}
-        isPrivate
-      />
+      <Route path="/cadencomenda/:id/edit" component={CadastroEncomenda} isPrivate />
     </Switch>
   );
 }
