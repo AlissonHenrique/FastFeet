@@ -21,6 +21,7 @@ export default function GerenciarEntregadores() {
       return setList(response.data);
     }
     load();
+    console.log(list);
   }, [list]);
 
   function handleOpenMenu() {

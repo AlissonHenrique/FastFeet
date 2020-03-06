@@ -20,8 +20,6 @@ import Header from '../../components/Header';
 export default function GerenciarEncomendas() {
   const [menu, setMenu] = useState('none');
 
-
-
   function handleOpenMenu() {
     setMenu('show');
   }
@@ -36,7 +34,7 @@ export default function GerenciarEncomendas() {
         <HeaderBox>
           <input type="text" placeholder="Buscar por encomendas" />
           <div>
-            <Link to="/cadastroencomenda">
+            <Link to="/cadencomenda">
               <IconAdd /> Cadastrar
             </Link>
           </div>
@@ -59,7 +57,13 @@ export default function GerenciarEncomendas() {
           <div className="colum-04">Rio do Sul</div>
           <div className="colum-05">Santa Catarina</div>
           <div className="colum-06">ENTREGUE</div>
-          <div className="colum-07" onMouseOver={handleOpenMenu} onFocus onMouseOut={handleCloseMenu} onBlur >
+          <div
+            className="colum-07"
+            onMouseOver={handleOpenMenu}
+            onFocus
+            onMouseOut={handleCloseMenu}
+            onBlur
+          >
             <MdMoreHoriz color="#C6C6C6" size={20} />
             <Menu state={menu}>
               <button type="button">

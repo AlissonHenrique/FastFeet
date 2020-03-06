@@ -3,14 +3,12 @@ import { MdDone, MdKeyboardArrowLeft } from 'react-icons/md';
 import { darken } from 'polished';
 import { Link } from 'react-router-dom';
 
-
 export const Container = styled.div`
   max-width: 900px;
   height: 500px;
   margin: 0 auto;
   padding: 34px 0 0 0;
 `;
-
 
 export const BtnBack = styled(Link)`
   line-height: 36px;
@@ -27,11 +25,10 @@ export const BtnBack = styled(Link)`
   line-height: 36px;
   padding: 10px 15px;
 
-
   &:hover {
     background: ${darken(0.03, '#ccc')};
   }
-`
+`;
 export const BtnAdd = styled.button`
   text-align: center;
   background: #7d40e7;
@@ -50,17 +47,16 @@ export const BtnAdd = styled.button`
   &:hover {
     background: ${darken(0.03, '#7D40E7')};
   }
-  `
+`;
 export const HeaderBox = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom:34px;
+  margin-bottom: 34px;
   h1 {
     color: #444;
     font-size: 24px;
     font-weight: bold;
   }
-
 `;
 export const IconBack = styled(MdKeyboardArrowLeft)`
   color: #fff;
@@ -76,35 +72,37 @@ export const IconSave = styled(MdDone)`
 `;
 
 export const ContainerBox = styled.div`
-background:#fff;
-border-radius:4px;
-padding:40px 30px;
-label{
-  font-size:14px;
-  font-weight:bold;
-  color:#444444;
+  background: #fff;
+  border-radius: 4px;
+  padding: 40px 30px;
+  label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #444444;
   }
-input{
-  width:100%;
-  height:45px;
-  border-radius:4px;
-  border: 1px solid #DDDDDD;
-  margin:7px 0 20px;
-  padding:12px 25px;
-  font-size:16px;
-  color:#666666;
-}
-.line-one{
-  display:flex;
-  justify-content:space-between;
-  label
-    input{
-      width:405px;
-      }
-
-
-}
-
-
-`
-
+  input {
+    width: 100%;
+    height: 45px;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    margin: 7px 0 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    color: #666666;
+  }
+  .css-yk16xz-control {
+    width: 100%;
+    height: 45px;
+  }
+  .css-1hwfws3 {
+    height: 45px;
+    position: unset;
+  }
+  .line-one {
+    display: flex;
+    justify-content: space-between;
+    label input {
+      width: 405px;
+    }
+  }
+`;

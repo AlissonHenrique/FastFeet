@@ -70,7 +70,18 @@ export default function CadastroEntregadores({ match }) {
           </HeaderBox>
           <ContainerBox>
             <ContainerPhoto>
-              <File name="avatar_id" />
+              <label>
+                <img src={imgPhoto} alt="Avatar" />
+                {/* <input
+                  type="file"
+                  id="avatar"
+                  accept="image/*"
+                  data-file={file}
+                  onChange={handleChange}
+                  ref={ref}
+                   <File name="avatar_id"/>
+                /> */}
+              </label>
             </ContainerPhoto>
             <div>
               <label htmlFor="nome">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Container,
   HeaderBox,
@@ -8,9 +8,33 @@ import {
   BtnAdd,
   ContainerBox,
 } from './styles';
+import api from '../../services/api';
 import Header from '../../components/Header';
-
+import Select from 'react-select/async';
 export default function CadastroEncomenda() {
+  const [destinatario, setDestinatario] = useState([]);
+  const [entregador, setEntregador] = useState([]);
+  useEffect(() => {
+    async function loadDestinatarios() {
+      const res = await api.get('recipient');
+      const dataMap = await res.data.map(st => ({
+        label: st.nome,
+        value: st.id,
+      }));
+      setDestinatario(dataMap);
+    }
+    async function loadEntregador() {
+      const res = await api.get('delivere');
+      const dataMap = await res.data.map(st => ({
+        label: st.name,
+        value: st.id,
+      }));
+      setEntregador(dataMap);
+    }
+    loadDestinatarios();
+    loadEntregador();
+  }, []);
+
   return (
     <>
       <Header />
@@ -31,13 +55,19 @@ export default function CadastroEncomenda() {
             <label htmlFor="destinatário">
               Destinatário
               <br />
-              <input type="text" />
+              <Select
+                defaultOptions={destinatario}
+                //onChange={opt => handleStudent(opt)}
+              />
             </label>
 
             <label htmlFor="entregador">
               Entregador
               <br />
-              <input type="text" />
+              <Select
+                defaultOptions={entregador}
+                //onChange={opt => handleStudent(opt)}
+              />
             </label>
           </div>
           <div>
