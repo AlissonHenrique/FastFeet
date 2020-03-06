@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import history from '../../services/history';
 import {
   Container,
   HeaderBox,
@@ -9,6 +10,7 @@ import {
   BtnAdd,
   ContainerBox,
 } from './styles';
+
 import api from '../../services/api';
 import Header from '../../components/Header';
 import Input from '../../components/Form/Input';
@@ -18,32 +20,39 @@ export default function CadastroDestinatario({ match }) {
   useEffect(() => {
     async function load() {
       const { id } = match.params;
-      const response = await api.get(`/recipient/${id}`);
+      const response = await api.get(`/recipient/${id}/`);
       setInitial(response.data);
     }
     load();
   }, [match.params]);
-  function handleSubmit(data) {
-    console.log(data);
+  async function handleSubmit(data) {
+    if (match.params.id) {
+      const { id } = match.params;
+      await api.put(`/recipient/${id}`, data);
+      history.push('/destinatarios');
+    } else {
+      await api.post('/recipient', data);
+      history.push('/destinatarios');
+    }
   }
 
   return (
     <>
       <Header />
       <Container>
-        <HeaderBox>
-          <h1>Cadastro de destinatarios</h1>
-          <div>
-            <BtnBack to="/destinatarios">
-              <IconBack /> Voltar
-            </BtnBack>
-            <BtnAdd>
-              <IconSave /> Salvar
-            </BtnAdd>
-          </div>
-        </HeaderBox>
-        <ContainerBox>
-          <Form initialData={initial} onSubmit={handleSubmit}>
+        <Form initialData={initial} onSubmit={handleSubmit}>
+          <HeaderBox>
+            <h1>Cadastro de destinatarios</h1>
+            <div>
+              <BtnBack to="/destinatarios">
+                <IconBack /> Voltar
+              </BtnBack>
+              <BtnAdd type="submit">
+                <IconSave /> Salvar
+              </BtnAdd>
+            </div>
+          </HeaderBox>
+          <ContainerBox>
             <div>
               <label htmlFor="nome">
                 Nome
@@ -91,8 +100,8 @@ export default function CadastroDestinatario({ match }) {
                 <Input name="cep" />
               </label>
             </div>
-          </Form>
-        </ContainerBox>
+          </ContainerBox>
+        </Form>
       </Container>
     </>
   );

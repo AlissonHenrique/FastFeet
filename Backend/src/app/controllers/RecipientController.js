@@ -31,14 +31,8 @@ class RecipientControler {
   }
 
   async update(req, res) {
-    const recipienteExist = await Recipient.findOne({
-      where: { nome: req.body.nome },
-    });
-
-    // if (!recipienteExist) {
-    //   return res.status(400).json({ error: 'User already exists.' });
-    // }
-    const response = await recipienteExist.update(req.body);
+    const rs = await Recipient.findByPk(req.params.id);
+    const response = await rs.update(req.body);
     return res.json(response);
   }
 

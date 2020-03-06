@@ -7,8 +7,6 @@ import {
   IconBack,
   BtnAdd,
   ContainerBox,
-
-
 } from './styles';
 import Header from '../../components/Header';
 
@@ -23,34 +21,33 @@ export default function CadastroEncomenda() {
             <BtnBack to="/encomendas">
               <IconBack /> Voltar
             </BtnBack>
-            <BtnAdd >
+            <BtnAdd type="submit">
               <IconSave /> Salvar
             </BtnAdd>
           </div>
         </HeaderBox>
         <ContainerBox>
-
-
           <div className="line-one">
-            <label htmlFor="destinatário" >Destinatário<br />
+            <label htmlFor="destinatário">
+              Destinatário
+              <br />
               <input type="text" />
             </label>
 
-            <label htmlFor="entregador" >Entregador<br />
+            <label htmlFor="entregador">
+              Entregador
+              <br />
               <input type="text" />
             </label>
           </div>
           <div>
-            <label htmlFor="nome" >Nome do produto<br />
+            <label htmlFor="nome">
+              Nome do produto
+              <br />
               <input type="text" />
             </label>
           </div>
-
-
-
         </ContainerBox>
-
-
       </Container>
     </>
   );

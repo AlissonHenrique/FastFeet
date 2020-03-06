@@ -37,31 +37,37 @@ export default function CadastroEntregadores({ match }) {
       const response = await api.get(`/delivere/${id}/deliveres`);
       setInitial(response.data);
     }
-    console.log(match);
     loadData();
-  }, []);
+  }, [match.params]);
 
-  function handleSubmit(data) {
-    console.log(data);
+  async function handleSubmit(data) {
+    if (match.params.id) {
+      const { id } = match.params;
+      await api.put(`/delivere/${id}`, data);
+      history.push('/entregadores');
+    } else {
+      await api.post('/delivere', data);
+      history.push('/entregadores');
+    }
   }
 
   return (
     <>
       <Header />
       <Container>
-        <HeaderBox>
-          <h1>Gerenciando de entregadores</h1>
-          <div>
-            <BtnBack to="/entregadores">
-              <IconBack /> Voltar
-            </BtnBack>
-            <BtnAdd>
-              <IconSave /> Salvar
-            </BtnAdd>
-          </div>
-        </HeaderBox>
-        <ContainerBox>
-          <Form initialData={initial} onSubmit={handleSubmit}>
+        <Form initialData={initial} onSubmit={handleSubmit}>
+          <HeaderBox>
+            <h1>Gerenciando de entregadores</h1>
+            <div>
+              <BtnBack to="/entregadores">
+                <IconBack /> Voltar
+              </BtnBack>
+              <BtnAdd type="submit">
+                <IconSave /> Salvar
+              </BtnAdd>
+            </div>
+          </HeaderBox>
+          <ContainerBox>
             <ContainerPhoto>
               <label>
                 <img src={imgPhoto} alt="Avatar" />
@@ -89,8 +95,8 @@ export default function CadastroEntregadores({ match }) {
                 <Input name="email" type="text" />
               </label>
             </div>
-          </Form>
-        </ContainerBox>
+          </ContainerBox>
+        </Form>
       </Container>
     </>
   );
