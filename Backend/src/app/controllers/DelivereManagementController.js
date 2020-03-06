@@ -11,6 +11,7 @@ class DelivereManagementController {
   }
 
   async store(req, res) {
+    const { file: avatar_id } = req.file;
     const response = await DelivereManagement.create(req.body);
     return res.json(response);
   }

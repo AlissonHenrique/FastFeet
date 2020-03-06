@@ -16,6 +16,7 @@ import {
 import api from '../../services/api';
 import Header from '../../components/Header';
 import Input from '../../components/Form/Input';
+import File from '../../components/Form/File';
 
 export default function CadastroEntregadores({ match }) {
   const [initial, setInitial] = useState({});
@@ -69,17 +70,7 @@ export default function CadastroEntregadores({ match }) {
           </HeaderBox>
           <ContainerBox>
             <ContainerPhoto>
-              <label>
-                <img src={imgPhoto} alt="Avatar" />
-                {/* <input
-                  type="file"
-                  id="avatar"
-                  accept="image/*"
-                  data-file={file}
-                  onChange={handleChange}
-                  ref={ref}
-                /> */}
-              </label>
+              <File name="avatar_id" />
             </ContainerPhoto>
             <div>
               <label htmlFor="nome">
