@@ -99,6 +99,7 @@ export const ContainerBox = styled.div`
     justify-content: space-between;
     .css-1hwfws3 {
       height: 45px;
+      position: initial;
     }
     label {
       flex-grow: 1;
