@@ -7,10 +7,11 @@ import {
   IconBack,
   BtnAdd,
   ContainerBox,
+  Select,
 } from './styles';
 import api from '../../services/api';
 import Header from '../../components/Header';
-import Select from 'react-select/async';
+
 export default function CadastroEncomenda() {
   const [destinatario, setDestinatario] = useState([]);
   const [entregador, setEntregador] = useState([]);

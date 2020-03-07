@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { MdDone, MdKeyboardArrowLeft } from 'react-icons/md';
 import { darken } from 'polished';
 import { Link } from 'react-router-dom';
-
+import SelectAsync from 'react-select/async';
 export const Container = styled.div`
   max-width: 900px;
   height: 500px;
@@ -29,6 +29,7 @@ export const BtnBack = styled(Link)`
     background: ${darken(0.03, '#ccc')};
   }
 `;
+
 export const BtnAdd = styled.button`
   text-align: center;
   background: #7d40e7;
@@ -70,7 +71,9 @@ export const IconSave = styled(MdDone)`
   position: relative;
   top: 6px;
 `;
-
+export const Select = styled(SelectAsync)`
+  flex-grow: 1;
+`;
 export const ContainerBox = styled.div`
   background: #fff;
   border-radius: 4px;
@@ -90,17 +93,16 @@ export const ContainerBox = styled.div`
     font-size: 16px;
     color: #666666;
   }
-  .css-yk16xz-control {
-    width: 100%;
-    height: 45px;
-  }
-  .css-1hwfws3 {
-    height: 45px;
-    position: unset;
-  }
+
   .line-one {
     display: flex;
     justify-content: space-between;
+    .css-1hwfws3 {
+      height: 45px;
+    }
+    label {
+      flex-grow: 1;
+    }
     label input {
       width: 405px;
     }

@@ -1,18 +1,23 @@
 import { getHours } from 'date-fns';
 import OrderManagement from '../models/OrderManagement';
+import Recipient from '../models/Recipient';
 import DelivereManagement from '../models/DelivereManagement';
 import Mail from '../../mail/mail';
 import { parseISO, format } from 'date-fns';
 
 class OrderManagementController {
   async index(req, res) {
-    const response = await OrderManagement.findOne({
-      where: { id: req.params.id },
+    const response = await OrderManagement.findAll({
       include: [
         {
           model: DelivereManagement,
           as: 'entregador',
-          attributes: ['email'],
+          attributes: ['email', 'name', 'avatar_id'],
+        },
+        {
+          model: Recipient,
+          as: 'destinatario',
+          attributes: ['nome', 'cidade', 'estado'],
         },
       ],
     });

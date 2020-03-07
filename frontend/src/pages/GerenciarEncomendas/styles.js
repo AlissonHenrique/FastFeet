@@ -34,7 +34,6 @@ export const HeaderBox = styled.div`
     line-height: 36px;
     padding: 10px 15px;
 
-
     &:hover {
       background: ${darken(0.03, '#7D40E7')};
     }
@@ -113,13 +112,10 @@ export const Table = styled.div`
     display: flex;
     align-items: center;
     width: 180px;
-    .iconName {
+    img {
       border-radius: 50%;
-      background: #f4effc;
-      color: #a28fd0;
       margin-right: 10px;
       text-align: center;
-      padding: 8px 0 0 0;
       width: 35px;
       height: 35px;
     }
@@ -137,7 +133,7 @@ export const Table = styled.div`
     width: 95px;
     padding-right: 25px;
     text-align: right;
-    height:15px;
+    height: 15px;
     svg {
       margin-right: 12px;
       cursor: pointer;

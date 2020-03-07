@@ -24,6 +24,10 @@ class OrderManagement extends Model {
       foreignKey: 'deliveryman_id',
       as: 'entregador',
     });
+    this.belongsTo(models.Recipient, {
+      foreignKey: 'recipient_id',
+      as: 'destinatario',
+    });
   }
 }
 export default OrderManagement;

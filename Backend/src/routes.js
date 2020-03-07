@@ -46,8 +46,10 @@ routes.delete('/delivere/:id', DelivereManagementController.delete);
 
 // GESTÃO DE ENCOMENDA //
 routes.post('/order', OrderManagementController.store);
-routes.get('/order/:id', OrderManagementController.index);
+routes.get('/order', OrderManagementController.index);
 routes.put('/order/:id', OrderManagementController.update);
 routes.delete('/order/:id', OrderManagementController.delete);
+
+///ENCOMENDA
 
 export default routes;
