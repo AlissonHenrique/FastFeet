@@ -97,9 +97,13 @@ export const ContainerBox = styled.div`
   .line-one {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 16px;
     .css-1hwfws3 {
       height: 45px;
       position: initial;
+    }
+    label:nth-child(1) {
+      margin-right: 20px;
     }
     label {
       flex-grow: 1;

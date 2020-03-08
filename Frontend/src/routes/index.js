@@ -27,7 +27,7 @@ export default function Routes() {
       <Route path="/caddestinatarios" component={CadastroDestinatario} isPrivate />
       <Route path="/caddestinatariosedit/:id/edit" component={CadastroDestinatario} isPrivate />
       <Route path="/cadencomenda" component={CadastroEncomenda} isPrivate />
-      <Route path="/cadencomenda/:id/edit" component={CadastroEncomenda} isPrivate />
+      <Route path="/cadencomendaedit/:id/edit" component={CadastroEncomenda} isPrivate />
     </Switch>
   );
 }

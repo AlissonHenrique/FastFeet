@@ -72,8 +72,6 @@ export const HeaderTable = styled.div`
     width: 825px;
   }
 
-
-
   .colum-07 {
     width: 95px;
     padding-right: 25px;
@@ -101,7 +99,7 @@ export const Table = styled.div`
   }
   .colum-07 {
     width: 95px;
-    height:15px;
+    height: 15px;
     padding-right: 25px;
     text-align: right;
     svg {
@@ -120,17 +118,17 @@ export const ModalBlack = styled.div`
 `;
 export const BoxModal = styled.div`
   z-index: 2;
-  position:absolute;
+  position: absolute;
   padding: 22px;
   width: 450px;
   height: auto;
   border-radius: 4px;
   background: #fff;
-  top:31%;
-  left:0;
-  right:0;
-  margin:auto;
-   display: ${props => props.state || 'none'};
+  top: 31%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: ${props => props.state || 'none'};
   h1,
   h2 {
     font-size: 14px;
@@ -144,18 +142,7 @@ export const BoxModal = styled.div`
     color: #666666;
     margin: 15px 0;
   }
-  textarea {
-    width: 100%;
-    height: 127px;
-    margin-top: 15px;
-    border: 1px solid #dddddd;
-    border-radius: 4px;
-    border-color: #dddddd;
-    padding: 15px;
-    font-size: 16px;
-    font-family: 'Roboto';
-    color: #999999;
-  }
+
   button {
     width: 100%;
     height: 45px;
@@ -190,7 +177,6 @@ export const Menu = styled.div`
     position: relative;
     top: -10px;
     left: 30px;
-
   }
   button {
     display: flex;

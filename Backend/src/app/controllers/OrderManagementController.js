@@ -7,6 +7,25 @@ import { parseISO, format } from 'date-fns';
 
 class OrderManagementController {
   async index(req, res) {
+    const enc = await OrderManagement.findByPk(req.params.id);
+    if (enc) {
+      const enc2 = await OrderManagement.findOne({
+        where: { id: req.params.id },
+        include: [
+          {
+            model: DelivereManagement,
+            as: 'entregador',
+            attributes: ['name'],
+          },
+          {
+            model: Recipient,
+            as: 'destinatario',
+            attributes: ['nome'],
+          },
+        ],
+      });
+      return res.json(enc2);
+    }
     const response = await OrderManagement.findAll({
       include: [
         {
@@ -17,7 +36,7 @@ class OrderManagementController {
         {
           model: Recipient,
           as: 'destinatario',
-          attributes: ['nome', 'cidade', 'estado'],
+          attributes: ['nome', 'cidade', 'estado', 'rua', 'numero', 'cep'],
         },
       ],
     });

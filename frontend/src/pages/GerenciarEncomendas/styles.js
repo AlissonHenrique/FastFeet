@@ -161,7 +161,8 @@ export const Menu = styled.div`
     position: absolute;
     top: -10px;
   }
-  button {
+  button,
+  a {
     display: flex;
     width: 100%;
     font-size: 16px;
@@ -173,5 +174,56 @@ export const Menu = styled.div`
     p {
       margin-left: 5px;
     }
+  }
+`;
+export const ModalBlack = styled.div`
+  z-index: 1;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: ${props => props.state || 'none'};
+`;
+export const BoxModal = styled.div`
+  z-index: 2;
+  position: absolute;
+  padding: 22px;
+  width: 450px;
+  height: auto;
+  border-radius: 4px;
+  background: #fff;
+  top: 31%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: ${props => props.state || 'none'};
+  hr {
+    border: 1px solid #eeeeee;
+  }
+  h1,
+  h2 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #444444;
+  }
+  p {
+    font-size: 16px;
+    line-height: 26px;
+    color: #666666;
+    margin: 15px 0;
+  }
+
+  button {
+    width: 100%;
+    height: 45px;
+    background: #ee4d64;
+    line-height: 45px;
+    text-align: center;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 16px;
   }
 `;
