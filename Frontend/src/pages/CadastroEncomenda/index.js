@@ -24,21 +24,23 @@ export default function CadastroEncomenda({ match }) {
 
   useEffect(() => {
     async function loadEdit() {
-      const { id } = match.params;
-      const response = await api.get(`/order/${id}`);
-      const responseEnt = await api.get(`/recipient/${id}`);
-      const responseDest = await api.get(`delivere/${id}/deliveres`);
-      const responseEntLabel = {
-        label: responseEnt.data.nome,
-        value: responseEnt.data.id,
-      };
-      const responseDestLabel = {
-        label: responseDest.data.name,
-        value: responseDest.data.id,
-      };
-      setDestSelect(responseDestLabel);
-      setEntSelect(responseEntLabel);
-      setInitial(response.data);
+      if (match.params.id) {
+        const { id } = match.params;
+        const response = await api.get(`/order/${id}`);
+        const responseEnt = await api.get(`/recipient/${id}`);
+        const responseDest = await api.get(`delivere/${id}/deliveres`);
+        const responseEntLabel = {
+          label: responseEnt.data.nome,
+          value: responseEnt.data.id,
+        };
+        const responseDestLabel = {
+          label: responseDest.data.name,
+          value: responseDest.data.id,
+        };
+        setDestSelect(responseDestLabel);
+        setEntSelect(responseEntLabel);
+        setInitial(response.data);
+      }
     }
 
     async function loadDestinatarios() {
