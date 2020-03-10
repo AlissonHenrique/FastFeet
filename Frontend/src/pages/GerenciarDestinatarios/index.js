@@ -13,8 +13,10 @@ import {
 import Header from '../../components/Header';
 
 export default function GerenciarDestinatarios() {
-  const [list, setList] = useState([]);
   const [hover, setHover] = useState(false);
+  const [idmenu, setIdmenu] = useState('');
+  const [list, setList] = useState([]);
+
   useEffect(() => {
     async function load() {
       const response = await api.get('recipient');
@@ -23,10 +25,11 @@ export default function GerenciarDestinatarios() {
     load();
   }, [list]);
 
-  function handleOpenMenu(id, e) {
-    setHover(true);
+  function handleToggleHover(id) {
+    setHover(!hover);
+    setIdmenu(id);
   }
-  function handleCloseMenu() {}
+
   async function handleDelete(id) {
     try {
       await api.delete(`/recipient/${id}`);
@@ -63,10 +66,14 @@ export default function GerenciarDestinatarios() {
               {lt.rua}, {lt.numero}, {lt.cidade} - {lt.estado}
             </div>
 
-            <div className="colum-07" onMouseOver={() => handleOpenMenu(lt.id)}>
+            <div
+              className="colum-07"
+              onMouseEnter={() => handleToggleHover(lt.id)}
+              onMouseLeave={() => handleToggleHover()}
+            >
               <MdMoreHoriz color="#C6C6C6" size={20} />
 
-              <Menu>
+              <Menu state={idmenu == lt.id ? 'block' : 'none'}>
                 <Link to={`/caddestinatariosedit/${lt.id}/edit`}>
                   <MdCreate color="#4D85EE" size={20} />
                   <p> Editar</p>

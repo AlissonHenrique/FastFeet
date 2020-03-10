@@ -20,8 +20,10 @@ import {
 import Header from '../../components/Header';
 import api from '../../services/api';
 import { format, parseISO } from 'date-fns';
+
 export default function GerenciarEncomendas() {
-  const [menu, setMenu] = useState('none');
+  const [hover, setHover] = useState(false);
+  const [idmenu, setIdmenu] = useState('');
   const [list, setList] = useState([]);
   const [modal, setModal] = useState();
   useEffect(() => {
@@ -36,11 +38,9 @@ export default function GerenciarEncomendas() {
     }
     load();
   }, [list]);
-  function handleOpenMenu() {
-    setMenu('show');
-  }
-  function handleCloseMenu() {
-    setMenu('');
+  function handleToggleHover(id) {
+    setHover(!hover);
+    setIdmenu(id);
   }
   function handleModal() {
     setModal('show');
@@ -91,11 +91,11 @@ export default function GerenciarEncomendas() {
             <div className="colum-06">ENTREGUE</div>
             <div
               className="colum-07"
-              onMouseOver={handleOpenMenu}
-              onMouseOut={handleCloseMenu}
+              onMouseEnter={() => handleToggleHover(lt.id)}
+              onMouseLeave={handleToggleHover}
             >
               <MdMoreHoriz color="#C6C6C6" size={20} />
-              <Menu state={menu}>
+              <Menu state={idmenu == lt.id ? 'block' : 'none'}>
                 <button type="button" onClick={handleModal}>
                   <MdRemoveRedEye color="#8E5BE8" size={20} />
                   <p> Visualizar</p>

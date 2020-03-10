@@ -124,7 +124,7 @@ export const Menu = styled.div`
   position: relative;
   right: 30px;
   align-items: center;
-
+  display: ${props => props.state || 'none'};
   &::before {
     content: '';
     background: url(${arrow});

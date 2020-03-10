@@ -13,7 +13,8 @@ import {
 import Header from '../../components/Header';
 
 export default function GerenciarEntregadores() {
-  const [menu, setMenu] = useState('none');
+  const [hover, setHover] = useState(false);
+  const [idmenu, setIdmenu] = useState('');
   const [list, setList] = useState([]);
   useEffect(() => {
     async function load() {
@@ -21,14 +22,11 @@ export default function GerenciarEntregadores() {
       return setList(response.data);
     }
     load();
-    console.log(list);
-  }, [list]);
+  }, []);
 
-  function handleOpenMenu() {
-    setMenu('show');
-  }
-  function handleCloseMenu() {
-    setMenu('');
+  function handleToggleHover(id) {
+    setHover(!hover);
+    setIdmenu(id);
   }
 
   async function handleDelete(id) {
@@ -66,11 +64,12 @@ export default function GerenciarEntregadores() {
             <div className="colum-04">{lt.email}</div>
             <div
               className="colum-07"
-              onMouseOver={handleOpenMenu}
-              onMouseOut={handleCloseMenu}
+              onMouseEnter={() => handleToggleHover(lt.id)}
+              onMouseLeave={handleToggleHover}
             >
               <MdMoreHoriz color="#C6C6C6" size={20} />
-              <Menu state={menu}>
+
+              <Menu state={idmenu == lt.id ? 'block' : 'none'}>
                 <Link to={`/cadentregadoresedit/${lt.id}/edit`}>
                   <MdCreate color="#4D85EE" size={20} />
                   <p> Editar</p>
