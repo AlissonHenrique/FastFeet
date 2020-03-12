@@ -7,6 +7,7 @@ import {
   MdRemoveRedEye,
   MdDeleteForever,
 } from 'react-icons/md';
+import { format, parseISO } from 'date-fns';
 import {
   Container,
   HeaderBox,
@@ -19,7 +20,6 @@ import {
 } from './styles';
 import Header from '../../components/Header';
 import api from '../../services/api';
-import { format, parseISO } from 'date-fns';
 
 export default function GerenciarEncomendas() {
   const [hover, setHover] = useState(false);
@@ -82,6 +82,7 @@ export default function GerenciarEncomendas() {
                   lt.entregador.avatar_id ||
                   'https://api.adorable.io/avatars/50/abott@adorable.png'
                 }
+                alt="avatar"
               />
 
               {lt.entregador.name}
@@ -95,7 +96,7 @@ export default function GerenciarEncomendas() {
               onMouseLeave={handleToggleHover}
             >
               <MdMoreHoriz color="#C6C6C6" size={20} />
-              <Menu state={idmenu == lt.id ? 'block' : 'none'}>
+              <Menu state={idmenu === lt.id ? 'block' : 'none'}>
                 <button type="button" onClick={handleModal}>
                   <MdRemoveRedEye color="#8E5BE8" size={20} />
                   <p> Visualizar</p>

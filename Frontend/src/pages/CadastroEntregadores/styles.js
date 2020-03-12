@@ -2,8 +2,18 @@ import styled from 'styled-components';
 import { MdDone, MdKeyboardArrowLeft } from 'react-icons/md';
 import { darken } from 'polished';
 import { Link } from 'react-router-dom';
+import File from '../../components/Form/File';
 
 
+export const FileInput = styled(File)`
+position:absolute;
+top:-165px;
+z-index:1;
+height:150px !important;
+ 
+   
+
+`
 export const Container = styled.div`
   max-width: 900px;
   height: 500px;

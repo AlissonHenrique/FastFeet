@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from '@unform/web';
-import imgPhoto from '../../assets/icon-photo.svg';
+
 import history from '../../services/history';
 import {
   Container,
@@ -12,11 +13,12 @@ import {
   BtnAdd,
   ContainerBox,
   ContainerPhoto,
+  FileInput
 } from './styles';
 import api from '../../services/api';
 import Header from '../../components/Header';
 import Input from '../../components/Form/Input';
-import File from '../../components/Form/File';
+
 
 export default function CadastroEntregadores({ match }) {
   const [initial, setInitial] = useState({});
@@ -41,16 +43,6 @@ export default function CadastroEntregadores({ match }) {
     loadData();
   }, [match.params]);
 
-  async function handleSubmit(data) {
-    if (match.params.id) {
-      const { id } = match.params;
-      await api.put(`/delivere/${id}`, data);
-      history.push('/entregadores');
-    } else {
-      await api.post('/delivere', data);
-      history.push('/entregadores');
-    }
-  }
 
   return (
     <>
@@ -71,16 +63,7 @@ export default function CadastroEntregadores({ match }) {
           <ContainerBox>
             <ContainerPhoto>
               <label>
-                <img src={imgPhoto} alt="Avatar" />
-                {/* <input
-                  type="file"
-                  id="avatar"
-                  accept="image/*"
-                  data-file={file}
-                  onChange={handleChange}
-                  ref={ref}
-                   <File name="avatar_id"/>
-                /> */}
+                <FileInput name="file" />
               </label>
             </ContainerPhoto>
             <div>

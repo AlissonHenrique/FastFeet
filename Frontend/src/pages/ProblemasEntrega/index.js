@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import api from '../../services/api';
 import { MdMoreHoriz, MdRemoveRedEye, MdDeleteForever } from 'react-icons/md';
+import api from '../../services/api';
 import {
   Container,
   HeaderTable,
@@ -62,7 +62,7 @@ export default function ProblemasEntrega() {
               onMouseLeave={handleToggleHover}
             >
               <MdMoreHoriz color="#C6C6C6" size={20} />
-              <Menu state={idmenu == lt.id ? 'block' : 'none'}>
+              <Menu state={idmenu === lt.id ? 'block' : 'none'}>
                 <button type="button" onClick={handleModal}>
                   <MdRemoveRedEye color="#4D85EE" size={20} />
                   <p> Visualizar</p>

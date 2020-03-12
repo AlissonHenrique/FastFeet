@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import api from '../../services/api';
 import { MdMoreHoriz, MdCreate, MdDeleteForever } from 'react-icons/md';
+import api from '../../services/api';
 import {
   Container,
   HeaderBox,
@@ -73,7 +73,7 @@ export default function GerenciarDestinatarios() {
             >
               <MdMoreHoriz color="#C6C6C6" size={20} />
 
-              <Menu state={idmenu == lt.id ? 'block' : 'none'}>
+              <Menu state={idmenu === lt.id ? 'block' : 'none'}>
                 <Link to={`/caddestinatariosedit/${lt.id}/edit`}>
                   <MdCreate color="#4D85EE" size={20} />
                   <p> Editar</p>

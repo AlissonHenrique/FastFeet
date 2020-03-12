@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Form } from '@unform/web';
 import {
   Container,
   HeaderBox,
@@ -12,7 +13,6 @@ import {
 import api from '../../services/api';
 import history from '../../services/history';
 import Header from '../../components/Header';
-import { Form } from '@unform/web';
 import Input from '../../components/Form/Input';
 
 export default function CadastroEncomenda({ match }) {
@@ -62,7 +62,7 @@ export default function CadastroEncomenda({ match }) {
     loadDestinatarios();
     loadEntregador();
     loadEdit();
-  }, []);
+  }, [match.params]);
 
   async function handleSubmit(data) {
     const montData = {

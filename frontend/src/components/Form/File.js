@@ -1,11 +1,11 @@
 import React, {
-  ChangeEvent,
   useRef,
   useEffect,
   useCallback,
   useState,
 } from 'react';
 import { useField } from '@unform/core';
+import imgPhoto from '../../assets/icon-photo.svg';
 
 const ImageInput = ({ name, ...rest }) => {
   const inputRef = useRef(null);
@@ -35,8 +35,10 @@ const ImageInput = ({ name, ...rest }) => {
   }, [fieldName, registerField]);
   return (
     <>
-      {preview && <img src={preview} alt="Preview" width="100" />}
+      {}
+      {preview ? preview && <img src={preview} alt="Preview" width="100" /> : <img src={imgPhoto} alt="Preview" width="100" />}
       <input type="file" ref={inputRef} onChange={handlePreview} {...rest} />
+
     </>
   );
 };
