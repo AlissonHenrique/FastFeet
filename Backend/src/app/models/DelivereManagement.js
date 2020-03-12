@@ -7,6 +7,12 @@ class DelivereManagement extends Model {
         name: Sequelize.STRING,
         avatar_id: Sequelize.INTEGER,
         email: Sequelize.STRING,
+        url: {
+          type: Sequelize.VIRTUAL,
+          get() {
+            return `${process.env.APP_URL}/files/${this.avatar_id}`;
+          },
+        },
       },
       {
         sequelize,
@@ -15,8 +21,6 @@ class DelivereManagement extends Model {
 
     return this;
   }
-  static associate(models) {
-    this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'avatar' });
-  }
+
 }
 export default DelivereManagement;
