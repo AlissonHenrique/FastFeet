@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('delivere_managements', {
+    return queryInterface.createTable('files', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -11,14 +11,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      avatar_id: {
-        type: Sequelize.INTEGER,
-        references: { model: 'files', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
-        allowNull: true,
-      },
-      email: {
+      path: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
@@ -35,6 +28,6 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.dropTable('delivere_managements');
+    return queryInterface.dropTable('files');
   },
 };

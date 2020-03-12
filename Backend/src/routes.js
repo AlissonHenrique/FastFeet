@@ -9,6 +9,7 @@ import DelivereManagementController from './app/controllers/DelivereManagementCo
 import DelivereController from './app/controllers/DelivereController';
 import OrderManagementController from './app/controllers/OrderManagementController';
 import ProblemController from './app/controllers/ProblemController';
+import FileController from './app/controllers/FileController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -18,11 +19,7 @@ routes.post('/sessions', SessionController.store);
 
 // ENTREGADORES //
 
-routes.post(
-  '/delivere',
-  upload.single('file'),
-  DelivereManagementController.store
-);
+routes.post('/files', upload.single('file'), FileController.store);
 
 ///ENTREGADORES
 routes.post('/problem', ProblemController.store);

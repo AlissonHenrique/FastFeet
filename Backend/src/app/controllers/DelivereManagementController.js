@@ -11,8 +11,13 @@ class DelivereManagementController {
   }
 
   async store(req, res) {
-    const { file: avatar_id } = req.file;
-    const response = await DelivereManagement.create(req.body);
+    const { filename: avatar_id } = req.file;
+    const { name, email } = req.body;
+    const response = await DelivereManagement.create({
+      avatar_id,
+      name,
+      email,
+    });
     return res.json(response);
   }
 

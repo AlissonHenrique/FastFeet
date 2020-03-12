@@ -5,13 +5,14 @@ import databaseConfig from '../config/database';
 import DelivereManagement from '../app/models/DelivereManagement';
 import OrderManagement from '../app/models/OrderManagement';
 import DelivereProblem from '../app/models/DelivereProblem';
-
+import File from '../app/models/File';
 const models = [
   User,
   Recipient,
   DelivereManagement,
   OrderManagement,
   DelivereProblem,
+  File,
 ];
 
 class Database {

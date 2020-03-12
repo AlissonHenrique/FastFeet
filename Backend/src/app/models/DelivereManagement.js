@@ -15,5 +15,8 @@ class DelivereManagement extends Model {
 
     return this;
   }
+  static associate(models) {
+    this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'avatar' });
+  }
 }
 export default DelivereManagement;
