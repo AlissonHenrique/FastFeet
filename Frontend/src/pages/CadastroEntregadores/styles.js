@@ -4,29 +4,23 @@ import { darken } from 'polished';
 import { Link } from 'react-router-dom';
 import File from '../../components/Form/File';
 
-
 export const FileInput = styled(File)`
-position:absolute;
+  /* position:absolute;
 top:-165px;
 z-index:1;
-height:150px !important;
- 
-   
-
-`
+height:150px !important; */
+`;
 export const Container = styled.div`
   max-width: 900px;
   height: 500px;
   margin: 0 auto;
   padding: 34px 0 0 0;
-
-
 `;
 export const ContainerPhoto = styled.div`
- width: 100%;
- text-align:center;
- cursor: pointer;
-`
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+`;
 
 export const BtnBack = styled(Link)`
   line-height: 36px;
@@ -46,7 +40,7 @@ export const BtnBack = styled(Link)`
   &:hover {
     background: ${darken(0.03, '#ccc')};
   }
-`
+`;
 export const BtnAdd = styled.button`
   line-height: 36px;
   text-align: center;
@@ -66,17 +60,16 @@ export const BtnAdd = styled.button`
   &:hover {
     background: ${darken(0.03, '#7D40E7')};
   }
-  `
+`;
 export const HeaderBox = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom:34px;
+  margin-bottom: 34px;
   h1 {
     color: #444;
     font-size: 24px;
     font-weight: bold;
   }
-
 `;
 export const IconBack = styled(MdKeyboardArrowLeft)`
   color: #fff;
@@ -92,24 +85,22 @@ export const IconSave = styled(MdDone)`
 `;
 
 export const ContainerBox = styled.div`
-background:#fff;
-border-radius:4px;
-padding:40px 30px;
-label{
-  font-size:14px;
-  font-weight:bold;
-  color:#444444;
+  background: #fff;
+  border-radius: 4px;
+  padding: 40px 30px;
+  label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #444444;
   }
-input{
-  width:100%;
-  height:45px;
-  border-radius:4px;
-  border: 1px solid #DDDDDD;
-  margin:7px 0 20px;
-  padding:12px 25px;
-  font-size:16px;
-  color:#666666;
-}
-
-`
-
+  input {
+    width: 100%;
+    height: 45px;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    margin: 7px 0 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    color: #666666;
+  }
+`;

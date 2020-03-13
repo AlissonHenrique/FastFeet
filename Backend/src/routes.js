@@ -10,7 +10,6 @@ import DelivereController from './app/controllers/DelivereController';
 import OrderManagementController from './app/controllers/OrderManagementController';
 import ProblemController from './app/controllers/ProblemController';
 
-
 const routes = new Router();
 const upload = multer(multerConfig);
 
@@ -18,8 +17,6 @@ const upload = multer(multerConfig);
 routes.post('/sessions', SessionController.store);
 
 // ENTREGADORES //
-
-routes.post('/files', upload.single('file'), DelivereManagementController.store);
 
 ///ENTREGADORES
 routes.post('/problem', ProblemController.store);
@@ -34,8 +31,13 @@ routes.post('/recipient', RecipientController.store);
 routes.put('/recipient/:id', RecipientController.update);
 routes.get('/recipient', RecipientController.index);
 routes.get('/recipient/:id', RecipientController.index);
+routes.delete('/recipient/:id', RecipientController.delete);
 // GESTAO DE ENTREGADORES //
-routes.post('/delivere', DelivereManagementController.store);
+routes.post(
+  '/delivere',
+  upload.single('file'),
+  DelivereManagementController.store
+);
 routes.get('/delivere', DelivereManagementController.index);
 routes.get('/delivere/:id/deliveres', DelivereManagementController.index);
 routes.put('/delivere/:id', DelivereManagementController.update);

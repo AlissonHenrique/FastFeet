@@ -78,6 +78,7 @@ export default function CadastroEncomenda({ match }) {
       await api.post('/order', montData);
       history.push('/encomendas');
     }
+    console.log(montData);
   }
 
   function handleDest(opt) {
@@ -91,7 +92,7 @@ export default function CadastroEncomenda({ match }) {
     <>
       <Header />
       <Container>
-        <Form onSubmit={handleSubmit} initialData={initial}>
+        <Form initialData={initial} onSubmit={handleSubmit}>
           <HeaderBox>
             <h1>Cadastrar encomendas</h1>
             <div>

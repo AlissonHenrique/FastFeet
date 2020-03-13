@@ -36,6 +36,8 @@ export default function CadastroDestinatario({ match }) {
       await api.post('/recipient', data);
       history.push('/destinatarios');
     }
+
+    console.log(data);
   }
 
   return (

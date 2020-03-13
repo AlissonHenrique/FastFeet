@@ -13,36 +13,37 @@ import {
   BtnAdd,
   ContainerBox,
   ContainerPhoto,
-  FileInput
+  FileInput,
 } from './styles';
 import api from '../../services/api';
 import Header from '../../components/Header';
 import Input from '../../components/Form/Input';
 
-
 export default function CadastroEntregadores({ match }) {
   const [initial, setInitial] = useState({});
 
   async function handleSubmit(data) {
-    if (match.params.id) {
-      const { id } = match.params;
-      await api.put(`/delivere/${id}`, data);
-      history.push('/entregadores');
-    } else {
-      await api.post('/delivere', data);
-      history.push('/entregadores');
-    }
+    // if (match.params.id) {
+    //   const { id } = match.params;
+    //   await api.put(`/delivere/${id}`, data);
+    //   history.push('/entregadores');
+    // } else {
+    // await api.post('/delivere', data);
+    // history.push('/entregadores');
+    //  }
+    console.log(data);
   }
 
   useEffect(() => {
     async function loadData() {
-      const { id } = match.params;
-      const response = await api.get(`/delivere/${id}/deliveres`);
-      setInitial(response.data);
+      if (match.params.id) {
+        const { id } = match.params;
+        const response = await api.get(`/delivere/${id}/deliveres`);
+        setInitial(response.data);
+      }
     }
     loadData();
   }, [match.params]);
-
 
   return (
     <>
@@ -63,7 +64,7 @@ export default function CadastroEntregadores({ match }) {
           <ContainerBox>
             <ContainerPhoto>
               <label>
-                <FileInput name="file" />
+                <FileInput name="attach" type="file" />
               </label>
             </ContainerPhoto>
             <div>

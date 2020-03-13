@@ -18,7 +18,8 @@ class DelivereManagementController {
       name,
       email,
     });
-    return res.json(response);
+
+    return res.json(req.file);
   }
 
   async update(req, res) {

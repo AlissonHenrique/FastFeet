@@ -5,7 +5,7 @@ class DelivereManagement extends Model {
     super.init(
       {
         name: Sequelize.STRING,
-        avatar_id: Sequelize.INTEGER,
+        avatar_id: Sequelize.STRING,
         email: Sequelize.STRING,
         url: {
           type: Sequelize.VIRTUAL,
@@ -21,6 +21,5 @@ class DelivereManagement extends Model {
 
     return this;
   }
-
 }
 export default DelivereManagement;

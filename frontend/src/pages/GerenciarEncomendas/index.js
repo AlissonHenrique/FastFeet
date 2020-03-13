@@ -35,6 +35,7 @@ export default function GerenciarEncomendas() {
         formatStart: format(parseISO(m.start_date), 'dd/MM/yyyy'),
       }));
       return setList(data);
+      console.log(data);
     }
     load();
   }, [list]);
@@ -79,8 +80,8 @@ export default function GerenciarEncomendas() {
             <div className="colum-03">
               <img
                 src={
-                  lt.entregador.avatar_id ||
-                  'https://api.adorable.io/avatars/50/abott@adorable.png'
+                  lt.entregador.url
+
                 }
                 alt="avatar"
               />

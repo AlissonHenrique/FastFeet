@@ -31,7 +31,7 @@ class OrderManagementController {
         {
           model: DelivereManagement,
           as: 'entregador',
-          attributes: ['email', 'name', 'avatar_id'],
+          attributes: ['email', 'name', 'avatar_id', 'url'],
         },
         {
           model: Recipient,
@@ -48,7 +48,7 @@ class OrderManagementController {
     const { product, start_date, end_date } = req.body;
     const get = getHours(parseISO(start_date));
 
-    if (get < 8 || get > 18) {
+    if (get < 8 || get > 24) {
       return res.status(400).json({ error: 'Horário não permitido' });
     }
 

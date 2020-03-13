@@ -22,7 +22,7 @@ export default function GerenciarEntregadores() {
       return setList(response.data);
     }
     load();
-  }, []);
+  }, [list]);
 
   function handleToggleHover(id) {
     setHover(!hover);
@@ -59,7 +59,9 @@ export default function GerenciarEntregadores() {
         {list.map(lt => (
           <Table key={lt.id}>
             <div className="colum-01">#{lt.id}</div>
-            <div className="colum-02">{lt.avatar_id}</div>
+            <div className="colum-02">
+              <img src={lt.url} alt="Avatar" />
+            </div>
             <div className="colum-03">{lt.name}</div>
             <div className="colum-04">{lt.email}</div>
             <div
