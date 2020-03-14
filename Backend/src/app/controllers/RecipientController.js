@@ -1,14 +1,52 @@
 import * as Yup from 'yup';
 import Recipient from '../models/Recipient';
-
+import { Op } from 'sequelize';
 class RecipientControler {
   async index(req, res) {
+    const { q: recipientName, page = 1 } = req.query;
+
     const response = await Recipient.findByPk(req.params.id);
     if (response) {
       return res.json(response);
     }
-    const response2 = await Recipient.findAll();
-    return res.json(response2);
+    const response2 = await Recipient.findAll({
+      attributes: [
+        'id',
+        'nome',
+        'rua',
+        'numero',
+        'complemento',
+        'estado',
+        'cidade',
+        'cep',
+      ],
+      limit: 5,
+      offset: (page - 1) * 5,
+    });
+    if (response2) {
+      return res.json(response2);
+    }
+    const responseName = await Recipient.findAll({
+      where: {
+        nome: {
+          [Op.iLike]: `${recipientName}`,
+        },
+      },
+      attributes: [
+        'id',
+        'nome',
+        'rua',
+        'numero',
+        'complemento',
+        'estado',
+        'cidade',
+        'cep',
+      ],
+    });
+
+    if (responseName) {
+      return res.json(responseName);
+    }
   }
 
   async store(req, res) {

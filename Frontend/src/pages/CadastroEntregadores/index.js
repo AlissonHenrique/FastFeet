@@ -28,7 +28,10 @@ export default function CadastroEntregadores({ match }) {
     //   await api.put(`/delivere/${id}`, data);
     //   history.push('/entregadores');
     // } else {
-    // await api.post('/delivere', data);
+    const dataFile = new FormData();
+
+    dataFile.append('file', data.avatar);
+    await api.post('/delivere', data);
     // history.push('/entregadores');
     //  }
     console.log(data);
@@ -64,7 +67,7 @@ export default function CadastroEntregadores({ match }) {
           <ContainerBox>
             <ContainerPhoto>
               <label>
-                <FileInput name="attach" type="file" />
+                <FileInput name="avatar" type="file" />
               </label>
             </ContainerPhoto>
             <div>

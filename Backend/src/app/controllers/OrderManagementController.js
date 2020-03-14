@@ -4,11 +4,12 @@ import Recipient from '../models/Recipient';
 import DelivereManagement from '../models/DelivereManagement';
 import Mail from '../../mail/mail';
 import { parseISO, format } from 'date-fns';
-
+import { Op } from 'sequelize';
 class OrderManagementController {
   async index(req, res) {
-    const enc = await OrderManagement.findByPk(req.params.id);
-    if (enc) {
+    const { q: recipientProduct } = req.query;
+    const orderId = await OrderManagement.findByPk(req.params.id);
+    if (orderId) {
       const enc2 = await OrderManagement.findOne({
         where: { id: req.params.id },
         include: [
@@ -26,7 +27,19 @@ class OrderManagementController {
       });
       return res.json(enc2);
     }
+
     const response = await OrderManagement.findAll({
+      attributes: [
+        'id',
+        'product',
+        'recipient_id',
+        'deliveryman_id',
+        'signature_id',
+        'product',
+        'canceled_at',
+        'start_date',
+        'end_date',
+      ],
       include: [
         {
           model: DelivereManagement,
@@ -40,8 +53,22 @@ class OrderManagementController {
         },
       ],
     });
+    if (response) {
+      return res.json(response);
+    }
 
-    return res.json(response);
+    const responseProduct = await OrderManagement.findAll({
+      where: {
+        product: {
+          [Op.iLike]: `${recipientProduct}`,
+        },
+      },
+      attributes: ['id', 'product'],
+    });
+
+    if (responseProduct) {
+      return res.json(responseProduct);
+    }
   }
 
   async store(req, res) {
