@@ -8,26 +8,34 @@ import { Op } from 'sequelize';
 class OrderManagementController {
   async index(req, res) {
     const { q: recipientProduct } = req.query;
-    const orderId = await OrderManagement.findByPk(req.params.id);
-    if (orderId) {
-      const enc2 = await OrderManagement.findOne({
-        where: { id: req.params.id },
-        include: [
-          {
-            model: DelivereManagement,
-            as: 'entregador',
-            attributes: ['name'],
-          },
-          {
-            model: Recipient,
-            as: 'destinatario',
-            attributes: ['nome'],
-          },
-        ],
-      });
-      return res.json(enc2);
-    }
+    const orderId = await OrderManagement.findByPk(req.params.id, {
+      include: [
+        {
+          model: DelivereManagement,
+          as: 'entregador',
+          attributes: ['email', 'name', 'avatar_id', 'url'],
+        },
+        {
+          model: Recipient,
+          as: 'destinatario',
+          attributes: ['nome', 'cidade', 'estado', 'rua', 'numero', 'cep'],
+        },
+      ],
+    });
 
+    if (orderId) return res.json(orderId);
+    const responseProduct = await OrderManagement.findOne({
+      where: {
+        product: {
+          [Op.iLike]: `${recipientProduct}`,
+        },
+      },
+      attributes: ['id', 'product'],
+    });
+
+    if (responseProduct) {
+      return res.json(responseProduct);
+    }
     const response = await OrderManagement.findAll({
       attributes: [
         'id',
@@ -55,19 +63,6 @@ class OrderManagementController {
     });
     if (response) {
       return res.json(response);
-    }
-
-    const responseProduct = await OrderManagement.findAll({
-      where: {
-        product: {
-          [Op.iLike]: `${recipientProduct}`,
-        },
-      },
-      attributes: ['id', 'product'],
-    });
-
-    if (responseProduct) {
-      return res.json(responseProduct);
     }
   }
 
